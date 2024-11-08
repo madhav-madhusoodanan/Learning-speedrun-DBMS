@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/gin-gonic/gin"
 	"rampx/backend/apps/ping"
 	"rampx/backend/apps/swaps"
-	"github.com/gin-gonic/gin"
 )
 
 func main() {
