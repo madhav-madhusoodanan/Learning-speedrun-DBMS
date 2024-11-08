@@ -1,0 +1,34 @@
+POST http://localhost:8080/swap/execute
+Accept-Encoding: application/json 
+
+{
+    "privKey": "5de4111afa1a4b94908f83103eb1f1706367c2e68ca870fc3fb9a804cdab365a",
+    "userAddress": "0x70997970c51812dc3a010c7d01b50e0d17dc79c8",
+    "sellTokens": [
+        {
+            "token": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+            "amount": "10000000000000000"
+        }
+    ],
+    "buyTokens": [
+        {
+            "token": "0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0",
+            "amount": "10000000000000000"
+        }
+    ],
+    "routes": [
+        {
+            "processorIndex": "1",
+            "sellTokenDetails": [
+                {
+                    "token": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+                    "amount": "10000000000000000"
+                }
+            ],
+            "payload": "0xfe029156000000000000000000000000e7f1725e7734ce288f8367e1bb143e90bb3f05120000000000000000000000009fe46736679d2d9a65f0992f2272de9f3c7fa6e0000000000000000000000000000000000000000000000000002386f26fc10000000000000000000000000000000000000000000000000000002386f26fc10000",
+            "metadata": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+    ],
+    "userSignature": "0x4f99e24315eedf929210ccb09ff8d91c15bcd15f7a4f519abb83ea5485b15a0c6f0d6bfa81fea94b424297310d5b0b7417362c4c13ac8852c4e261391a3935c81c",
+    "chainId": 31337
+}
