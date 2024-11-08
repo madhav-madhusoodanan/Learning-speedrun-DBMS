@@ -9,5 +9,4 @@ import (
 func Setup(router *gin.RouterGroup) {
 	router.Use(cors.Default())
 	router.GET("/", Pong)
-	router.GET("/age/:name", AgePredict)
 }

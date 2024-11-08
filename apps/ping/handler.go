@@ -12,9 +12,3 @@ func Pong(c *gin.Context) {
       "message": "pong",
     })
 }
-
-func AgePredict(c *gin.Context) {
-  c.JSON(http.StatusOK, gin.H{
-    "age": 37,
-  })
-}
