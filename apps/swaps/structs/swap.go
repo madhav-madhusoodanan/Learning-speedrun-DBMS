@@ -17,6 +17,13 @@ type SwapRequest struct {
 type RequestTokenDetail struct {
 	TokenAddress string `json:"token" binding:"required"`
 	Amount       string `json:"amount" binding:"required"`     // Amount as string to handle big integers
+
+	// The below is used for tokens that support ERC-2612 (Permit flows)
+	PermitValue string `json:"permit_value,omitempty"`
+	PermitDeadline string `json:"permit_deadline,omitempty"`
+	PermitV uint8 `json:"permit_v,omitempty"`
+	PermitR string `json:"permit_r,omitempty"`
+	PermitS string `json:"permit_s,omitempty"`
 }
 
 // RequestRoute represents the JSON structure for route in the request

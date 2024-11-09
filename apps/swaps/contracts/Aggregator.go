@@ -51,113 +51,113 @@ type ExecutionVerifierTokenDetail struct {
 	Amount *big.Int
 }
 
-// ContractsMetaData contains all meta data concerning the Contracts contract.
-var ContractsMetaData = &bind.MetaData{
+// AggregatorMetaData contains all meta data concerning the Aggregator contract.
+var AggregatorMetaData = &bind.MetaData{
 	ABI: "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_pauser\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_blacklister\",\"type\":\"address\"},{\"internalType\":\"addresspayable\",\"name\":\"_feeCollector\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"}],\"name\":\"AddressEmptyCode\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"AddressInsufficientBalance\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"BlacklistedAccount\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"EnforcedPause\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ExpectedPause\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"FailedInnerCall\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"presumedSigner\",\"type\":\"address\"}],\"name\":\"IncorrectSigner\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"currentNonce\",\"type\":\"uint256\"}],\"name\":\"InvalidAccountNonce\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"contractIERC20\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"InvalidEndState\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"processorIndex\",\"type\":\"uint256\"}],\"name\":\"InvalidProcessor\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidShortString\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidTokenEntry\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"MathOverflowedMulDiv\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"contractIERC20\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"balance\",\"type\":\"uint256\"}],\"name\":\"MinBuyTokenAssertFailed\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"OwnableInvalidOwner\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"OwnableUnauthorizedAccount\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ReentrancyGuardReentrantCall\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"SafeERC20FailedOperation\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"str\",\"type\":\"string\"}],\"name\":\"StringTooLong\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"UnauthorizedBlacklister\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"UnauthorizedPauser\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[],\"name\":\"EIP712DomainChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"contractIERC20\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"structExecutionVerifier.TokenDetail[]\",\"name\":\"sellTokens\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"contractIERC20\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"structExecutionVerifier.TokenDetail[]\",\"name\":\"buyTokens\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"processorIndex\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"contractIERC20\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"internalType\":\"structExecutionVerifier.TokenDetail[]\",\"name\":\"sellTokenDetails\",\"type\":\"tuple[]\"},{\"internalType\":\"bytes\",\"name\":\"payload\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"metadata\",\"type\":\"bytes\"}],\"indexed\":false,\"internalType\":\"structExecutionVerifier.Route[]\",\"name\":\"routes\",\"type\":\"tuple[]\"}],\"name\":\"Executed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Paused\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Unpaused\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"blacklister\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"eip712Domain\",\"outputs\":[{\"internalType\":\"bytes1\",\"name\":\"fields\",\"type\":\"bytes1\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"version\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"chainId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"verifyingContract\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"salt\",\"type\":\"bytes32\"},{\"internalType\":\"uint256[]\",\"name\":\"extensions\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"contractIERC20\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"internalType\":\"structExecutionVerifier.TokenDetail[]\",\"name\":\"sellTokens\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"contractIERC20\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"internalType\":\"structExecutionVerifier.TokenDetail[]\",\"name\":\"buyTokens\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"processorIndex\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"contractIERC20\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"internalType\":\"structExecutionVerifier.TokenDetail[]\",\"name\":\"sellTokenDetails\",\"type\":\"tuple[]\"},{\"internalType\":\"bytes\",\"name\":\"payload\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"metadata\",\"type\":\"bytes\"}],\"internalType\":\"structExecutionVerifier.Route[]\",\"name\":\"routes\",\"type\":\"tuple[]\"}],\"name\":\"execute\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"contractIERC20\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"internalType\":\"structExecutionVerifier.TokenDetail[]\",\"name\":\"sellTokens\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"contractIERC20\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"internalType\":\"structExecutionVerifier.TokenDetail[]\",\"name\":\"buyTokens\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"processorIndex\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"contractIERC20\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"internalType\":\"structExecutionVerifier.TokenDetail[]\",\"name\":\"sellTokenDetails\",\"type\":\"tuple[]\"},{\"internalType\":\"bytes\",\"name\":\"payload\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"metadata\",\"type\":\"bytes\"}],\"internalType\":\"structExecutionVerifier.Route[]\",\"name\":\"routes\",\"type\":\"tuple[]\"},{\"internalType\":\"bytes\",\"name\":\"signature\",\"type\":\"bytes\"}],\"name\":\"execute\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"nonce\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"contractIERC20\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"internalType\":\"structExecutionVerifier.TokenDetail[]\",\"name\":\"sellTokens\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"contractIERC20\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"internalType\":\"structExecutionVerifier.TokenDetail[]\",\"name\":\"buyTokens\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"processorIndex\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"contractIERC20\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"internalType\":\"structExecutionVerifier.TokenDetail[]\",\"name\":\"sellTokenDetails\",\"type\":\"tuple[]\"},{\"internalType\":\"bytes\",\"name\":\"payload\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"metadata\",\"type\":\"bytes\"}],\"internalType\":\"structExecutionVerifier.Route[]\",\"name\":\"routes\",\"type\":\"tuple[]\"}],\"internalType\":\"structExecutionVerifier.Execution\",\"name\":\"execution\",\"type\":\"tuple\"},{\"internalType\":\"bytes\",\"name\":\"signature\",\"type\":\"bytes\"}],\"name\":\"extract\",\"outputs\":[{\"internalType\":\"addresspayable\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"feeCollector\",\"outputs\":[{\"internalType\":\"addresspayable\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"feeProportion\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"nonce\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"contractIERC20\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"internalType\":\"structExecutionVerifier.TokenDetail[]\",\"name\":\"sellTokens\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"contractIERC20\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"internalType\":\"structExecutionVerifier.TokenDetail[]\",\"name\":\"buyTokens\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"processorIndex\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"contractIERC20\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"internalType\":\"structExecutionVerifier.TokenDetail[]\",\"name\":\"sellTokenDetails\",\"type\":\"tuple[]\"},{\"internalType\":\"bytes\",\"name\":\"payload\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"metadata\",\"type\":\"bytes\"}],\"internalType\":\"structExecutionVerifier.Route[]\",\"name\":\"routes\",\"type\":\"tuple[]\"}],\"internalType\":\"structExecutionVerifier.Execution\",\"name\":\"execution\",\"type\":\"tuple\"}],\"name\":\"hashExecution\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"nonces\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pause\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"paused\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pauser\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_feeProportion\",\"type\":\"uint256\"}],\"name\":\"setFeeProportion\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"},{\"internalType\":\"contractIProcessor\",\"name\":\"processor\",\"type\":\"address\"}],\"name\":\"setProcessor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"isBlacklisted\",\"type\":\"bool\"}],\"name\":\"setUserBlacklist\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"unpause\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
 }
 
-// ContractsABI is the input ABI used to generate the binding from.
-// Deprecated: Use ContractsMetaData.ABI instead.
-var ContractsABI = ContractsMetaData.ABI
+// AggregatorABI is the input ABI used to generate the binding from.
+// Deprecated: Use AggregatorMetaData.ABI instead.
+var AggregatorABI = AggregatorMetaData.ABI
 
-// Contracts is an auto generated Go binding around an Ethereum contract.
-type Contracts struct {
-	ContractsCaller     // Read-only binding to the contract
-	ContractsTransactor // Write-only binding to the contract
-	ContractsFilterer   // Log filterer for contract events
+// Aggregator is an auto generated Go binding around an Ethereum contract.
+type Aggregator struct {
+	AggregatorCaller     // Read-only binding to the contract
+	AggregatorTransactor // Write-only binding to the contract
+	AggregatorFilterer   // Log filterer for contract events
 }
 
-// ContractsCaller is an auto generated read-only Go binding around an Ethereum contract.
-type ContractsCaller struct {
+// AggregatorCaller is an auto generated read-only Go binding around an Ethereum contract.
+type AggregatorCaller struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// ContractsTransactor is an auto generated write-only Go binding around an Ethereum contract.
-type ContractsTransactor struct {
+// AggregatorTransactor is an auto generated write-only Go binding around an Ethereum contract.
+type AggregatorTransactor struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// ContractsFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
-type ContractsFilterer struct {
+// AggregatorFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
+type AggregatorFilterer struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// ContractsSession is an auto generated Go binding around an Ethereum contract,
+// AggregatorSession is an auto generated Go binding around an Ethereum contract,
 // with pre-set call and transact options.
-type ContractsSession struct {
-	Contract     *Contracts        // Generic contract binding to set the session for
+type AggregatorSession struct {
+	Contract     *Aggregator       // Generic contract binding to set the session for
 	CallOpts     bind.CallOpts     // Call options to use throughout this session
 	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
 }
 
-// ContractsCallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// AggregatorCallerSession is an auto generated read-only Go binding around an Ethereum contract,
 // with pre-set call options.
-type ContractsCallerSession struct {
-	Contract *ContractsCaller // Generic contract caller binding to set the session for
-	CallOpts bind.CallOpts    // Call options to use throughout this session
+type AggregatorCallerSession struct {
+	Contract *AggregatorCaller // Generic contract caller binding to set the session for
+	CallOpts bind.CallOpts     // Call options to use throughout this session
 }
 
-// ContractsTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// AggregatorTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
 // with pre-set transact options.
-type ContractsTransactorSession struct {
-	Contract     *ContractsTransactor // Generic contract transactor binding to set the session for
-	TransactOpts bind.TransactOpts    // Transaction auth options to use throughout this session
+type AggregatorTransactorSession struct {
+	Contract     *AggregatorTransactor // Generic contract transactor binding to set the session for
+	TransactOpts bind.TransactOpts     // Transaction auth options to use throughout this session
 }
 
-// ContractsRaw is an auto generated low-level Go binding around an Ethereum contract.
-type ContractsRaw struct {
-	Contract *Contracts // Generic contract binding to access the raw methods on
+// AggregatorRaw is an auto generated low-level Go binding around an Ethereum contract.
+type AggregatorRaw struct {
+	Contract *Aggregator // Generic contract binding to access the raw methods on
 }
 
-// ContractsCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
-type ContractsCallerRaw struct {
-	Contract *ContractsCaller // Generic read-only contract binding to access the raw methods on
+// AggregatorCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+type AggregatorCallerRaw struct {
+	Contract *AggregatorCaller // Generic read-only contract binding to access the raw methods on
 }
 
-// ContractsTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
-type ContractsTransactorRaw struct {
-	Contract *ContractsTransactor // Generic write-only contract binding to access the raw methods on
+// AggregatorTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+type AggregatorTransactorRaw struct {
+	Contract *AggregatorTransactor // Generic write-only contract binding to access the raw methods on
 }
 
-// NewContracts creates a new instance of Contracts, bound to a specific deployed contract.
-func NewContracts(address common.Address, backend bind.ContractBackend) (*Contracts, error) {
-	contract, err := bindContracts(address, backend, backend, backend)
+// NewAggregator creates a new instance of Aggregator, bound to a specific deployed contract.
+func NewAggregator(address common.Address, backend bind.ContractBackend) (*Aggregator, error) {
+	contract, err := bindAggregator(address, backend, backend, backend)
 	if err != nil {
 		return nil, err
 	}
-	return &Contracts{ContractsCaller: ContractsCaller{contract: contract}, ContractsTransactor: ContractsTransactor{contract: contract}, ContractsFilterer: ContractsFilterer{contract: contract}}, nil
+	return &Aggregator{AggregatorCaller: AggregatorCaller{contract: contract}, AggregatorTransactor: AggregatorTransactor{contract: contract}, AggregatorFilterer: AggregatorFilterer{contract: contract}}, nil
 }
 
-// NewContractsCaller creates a new read-only instance of Contracts, bound to a specific deployed contract.
-func NewContractsCaller(address common.Address, caller bind.ContractCaller) (*ContractsCaller, error) {
-	contract, err := bindContracts(address, caller, nil, nil)
+// NewAggregatorCaller creates a new read-only instance of Aggregator, bound to a specific deployed contract.
+func NewAggregatorCaller(address common.Address, caller bind.ContractCaller) (*AggregatorCaller, error) {
+	contract, err := bindAggregator(address, caller, nil, nil)
 	if err != nil {
 		return nil, err
 	}
-	return &ContractsCaller{contract: contract}, nil
+	return &AggregatorCaller{contract: contract}, nil
 }
 
-// NewContractsTransactor creates a new write-only instance of Contracts, bound to a specific deployed contract.
-func NewContractsTransactor(address common.Address, transactor bind.ContractTransactor) (*ContractsTransactor, error) {
-	contract, err := bindContracts(address, nil, transactor, nil)
+// NewAggregatorTransactor creates a new write-only instance of Aggregator, bound to a specific deployed contract.
+func NewAggregatorTransactor(address common.Address, transactor bind.ContractTransactor) (*AggregatorTransactor, error) {
+	contract, err := bindAggregator(address, nil, transactor, nil)
 	if err != nil {
 		return nil, err
 	}
-	return &ContractsTransactor{contract: contract}, nil
+	return &AggregatorTransactor{contract: contract}, nil
 }
 
-// NewContractsFilterer creates a new log filterer instance of Contracts, bound to a specific deployed contract.
-func NewContractsFilterer(address common.Address, filterer bind.ContractFilterer) (*ContractsFilterer, error) {
-	contract, err := bindContracts(address, nil, nil, filterer)
+// NewAggregatorFilterer creates a new log filterer instance of Aggregator, bound to a specific deployed contract.
+func NewAggregatorFilterer(address common.Address, filterer bind.ContractFilterer) (*AggregatorFilterer, error) {
+	contract, err := bindAggregator(address, nil, nil, filterer)
 	if err != nil {
 		return nil, err
 	}
-	return &ContractsFilterer{contract: contract}, nil
+	return &AggregatorFilterer{contract: contract}, nil
 }
 
-// bindContracts binds a generic wrapper to an already deployed contract.
-func bindContracts(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
-	parsed, err := abi.JSON(strings.NewReader(ContractsABI))
+// bindAggregator binds a generic wrapper to an already deployed contract.
+func bindAggregator(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
+	parsed, err := abi.JSON(strings.NewReader(AggregatorABI))
 	if err != nil {
 		return nil, err
 	}
@@ -168,46 +168,46 @@ func bindContracts(address common.Address, caller bind.ContractCaller, transacto
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_Contracts *ContractsRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _Contracts.Contract.ContractsCaller.contract.Call(opts, result, method, params...)
+func (_Aggregator *AggregatorRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _Aggregator.Contract.AggregatorCaller.contract.Call(opts, result, method, params...)
 }
 
 // Transfer initiates a plain transaction to move funds to the contract, calling
 // its default method if one is available.
-func (_Contracts *ContractsRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Contracts.Contract.ContractsTransactor.contract.Transfer(opts)
+func (_Aggregator *AggregatorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _Aggregator.Contract.AggregatorTransactor.contract.Transfer(opts)
 }
 
 // Transact invokes the (paid) contract method with params as input values.
-func (_Contracts *ContractsRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _Contracts.Contract.ContractsTransactor.contract.Transact(opts, method, params...)
+func (_Aggregator *AggregatorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _Aggregator.Contract.AggregatorTransactor.contract.Transact(opts, method, params...)
 }
 
 // Call invokes the (constant) contract method with params as input values and
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_Contracts *ContractsCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _Contracts.Contract.contract.Call(opts, result, method, params...)
+func (_Aggregator *AggregatorCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _Aggregator.Contract.contract.Call(opts, result, method, params...)
 }
 
 // Transfer initiates a plain transaction to move funds to the contract, calling
 // its default method if one is available.
-func (_Contracts *ContractsTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Contracts.Contract.contract.Transfer(opts)
+func (_Aggregator *AggregatorTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _Aggregator.Contract.contract.Transfer(opts)
 }
 
 // Transact invokes the (paid) contract method with params as input values.
-func (_Contracts *ContractsTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _Contracts.Contract.contract.Transact(opts, method, params...)
+func (_Aggregator *AggregatorTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _Aggregator.Contract.contract.Transact(opts, method, params...)
 }
 
 // Blacklister is a free data retrieval call binding the contract method 0xbd102430.
 //
 // Solidity: function blacklister() view returns(address)
-func (_Contracts *ContractsCaller) Blacklister(opts *bind.CallOpts) (common.Address, error) {
+func (_Aggregator *AggregatorCaller) Blacklister(opts *bind.CallOpts) (common.Address, error) {
 	var out []interface{}
-	err := _Contracts.contract.Call(opts, &out, "blacklister")
+	err := _Aggregator.contract.Call(opts, &out, "blacklister")
 
 	if err != nil {
 		return *new(common.Address), err
@@ -222,21 +222,21 @@ func (_Contracts *ContractsCaller) Blacklister(opts *bind.CallOpts) (common.Addr
 // Blacklister is a free data retrieval call binding the contract method 0xbd102430.
 //
 // Solidity: function blacklister() view returns(address)
-func (_Contracts *ContractsSession) Blacklister() (common.Address, error) {
-	return _Contracts.Contract.Blacklister(&_Contracts.CallOpts)
+func (_Aggregator *AggregatorSession) Blacklister() (common.Address, error) {
+	return _Aggregator.Contract.Blacklister(&_Aggregator.CallOpts)
 }
 
 // Blacklister is a free data retrieval call binding the contract method 0xbd102430.
 //
 // Solidity: function blacklister() view returns(address)
-func (_Contracts *ContractsCallerSession) Blacklister() (common.Address, error) {
-	return _Contracts.Contract.Blacklister(&_Contracts.CallOpts)
+func (_Aggregator *AggregatorCallerSession) Blacklister() (common.Address, error) {
+	return _Aggregator.Contract.Blacklister(&_Aggregator.CallOpts)
 }
 
 // Eip712Domain is a free data retrieval call binding the contract method 0x84b0196e.
 //
 // Solidity: function eip712Domain() view returns(bytes1 fields, string name, string version, uint256 chainId, address verifyingContract, bytes32 salt, uint256[] extensions)
-func (_Contracts *ContractsCaller) Eip712Domain(opts *bind.CallOpts) (struct {
+func (_Aggregator *AggregatorCaller) Eip712Domain(opts *bind.CallOpts) (struct {
 	Fields            [1]byte
 	Name              string
 	Version           string
@@ -246,7 +246,7 @@ func (_Contracts *ContractsCaller) Eip712Domain(opts *bind.CallOpts) (struct {
 	Extensions        []*big.Int
 }, error) {
 	var out []interface{}
-	err := _Contracts.contract.Call(opts, &out, "eip712Domain")
+	err := _Aggregator.contract.Call(opts, &out, "eip712Domain")
 
 	outstruct := new(struct {
 		Fields            [1]byte
@@ -276,7 +276,7 @@ func (_Contracts *ContractsCaller) Eip712Domain(opts *bind.CallOpts) (struct {
 // Eip712Domain is a free data retrieval call binding the contract method 0x84b0196e.
 //
 // Solidity: function eip712Domain() view returns(bytes1 fields, string name, string version, uint256 chainId, address verifyingContract, bytes32 salt, uint256[] extensions)
-func (_Contracts *ContractsSession) Eip712Domain() (struct {
+func (_Aggregator *AggregatorSession) Eip712Domain() (struct {
 	Fields            [1]byte
 	Name              string
 	Version           string
@@ -285,13 +285,13 @@ func (_Contracts *ContractsSession) Eip712Domain() (struct {
 	Salt              [32]byte
 	Extensions        []*big.Int
 }, error) {
-	return _Contracts.Contract.Eip712Domain(&_Contracts.CallOpts)
+	return _Aggregator.Contract.Eip712Domain(&_Aggregator.CallOpts)
 }
 
 // Eip712Domain is a free data retrieval call binding the contract method 0x84b0196e.
 //
 // Solidity: function eip712Domain() view returns(bytes1 fields, string name, string version, uint256 chainId, address verifyingContract, bytes32 salt, uint256[] extensions)
-func (_Contracts *ContractsCallerSession) Eip712Domain() (struct {
+func (_Aggregator *AggregatorCallerSession) Eip712Domain() (struct {
 	Fields            [1]byte
 	Name              string
 	Version           string
@@ -300,15 +300,15 @@ func (_Contracts *ContractsCallerSession) Eip712Domain() (struct {
 	Salt              [32]byte
 	Extensions        []*big.Int
 }, error) {
-	return _Contracts.Contract.Eip712Domain(&_Contracts.CallOpts)
+	return _Aggregator.Contract.Eip712Domain(&_Aggregator.CallOpts)
 }
 
 // Extract is a free data retrieval call binding the contract method 0x4a6ed8a2.
 //
 // Solidity: function extract((address,uint256,(address,uint256)[],(address,uint256)[],(uint256,(address,uint256)[],bytes,bytes)[]) execution, bytes signature) view returns(address)
-func (_Contracts *ContractsCaller) Extract(opts *bind.CallOpts, execution ExecutionVerifierExecution, signature []byte) (common.Address, error) {
+func (_Aggregator *AggregatorCaller) Extract(opts *bind.CallOpts, execution ExecutionVerifierExecution, signature []byte) (common.Address, error) {
 	var out []interface{}
-	err := _Contracts.contract.Call(opts, &out, "extract", execution, signature)
+	err := _Aggregator.contract.Call(opts, &out, "extract", execution, signature)
 
 	if err != nil {
 		return *new(common.Address), err
@@ -323,23 +323,23 @@ func (_Contracts *ContractsCaller) Extract(opts *bind.CallOpts, execution Execut
 // Extract is a free data retrieval call binding the contract method 0x4a6ed8a2.
 //
 // Solidity: function extract((address,uint256,(address,uint256)[],(address,uint256)[],(uint256,(address,uint256)[],bytes,bytes)[]) execution, bytes signature) view returns(address)
-func (_Contracts *ContractsSession) Extract(execution ExecutionVerifierExecution, signature []byte) (common.Address, error) {
-	return _Contracts.Contract.Extract(&_Contracts.CallOpts, execution, signature)
+func (_Aggregator *AggregatorSession) Extract(execution ExecutionVerifierExecution, signature []byte) (common.Address, error) {
+	return _Aggregator.Contract.Extract(&_Aggregator.CallOpts, execution, signature)
 }
 
 // Extract is a free data retrieval call binding the contract method 0x4a6ed8a2.
 //
 // Solidity: function extract((address,uint256,(address,uint256)[],(address,uint256)[],(uint256,(address,uint256)[],bytes,bytes)[]) execution, bytes signature) view returns(address)
-func (_Contracts *ContractsCallerSession) Extract(execution ExecutionVerifierExecution, signature []byte) (common.Address, error) {
-	return _Contracts.Contract.Extract(&_Contracts.CallOpts, execution, signature)
+func (_Aggregator *AggregatorCallerSession) Extract(execution ExecutionVerifierExecution, signature []byte) (common.Address, error) {
+	return _Aggregator.Contract.Extract(&_Aggregator.CallOpts, execution, signature)
 }
 
 // FeeCollector is a free data retrieval call binding the contract method 0xc415b95c.
 //
 // Solidity: function feeCollector() view returns(address)
-func (_Contracts *ContractsCaller) FeeCollector(opts *bind.CallOpts) (common.Address, error) {
+func (_Aggregator *AggregatorCaller) FeeCollector(opts *bind.CallOpts) (common.Address, error) {
 	var out []interface{}
-	err := _Contracts.contract.Call(opts, &out, "feeCollector")
+	err := _Aggregator.contract.Call(opts, &out, "feeCollector")
 
 	if err != nil {
 		return *new(common.Address), err
@@ -354,23 +354,23 @@ func (_Contracts *ContractsCaller) FeeCollector(opts *bind.CallOpts) (common.Add
 // FeeCollector is a free data retrieval call binding the contract method 0xc415b95c.
 //
 // Solidity: function feeCollector() view returns(address)
-func (_Contracts *ContractsSession) FeeCollector() (common.Address, error) {
-	return _Contracts.Contract.FeeCollector(&_Contracts.CallOpts)
+func (_Aggregator *AggregatorSession) FeeCollector() (common.Address, error) {
+	return _Aggregator.Contract.FeeCollector(&_Aggregator.CallOpts)
 }
 
 // FeeCollector is a free data retrieval call binding the contract method 0xc415b95c.
 //
 // Solidity: function feeCollector() view returns(address)
-func (_Contracts *ContractsCallerSession) FeeCollector() (common.Address, error) {
-	return _Contracts.Contract.FeeCollector(&_Contracts.CallOpts)
+func (_Aggregator *AggregatorCallerSession) FeeCollector() (common.Address, error) {
+	return _Aggregator.Contract.FeeCollector(&_Aggregator.CallOpts)
 }
 
 // FeeProportion is a free data retrieval call binding the contract method 0x2a3ecc41.
 //
 // Solidity: function feeProportion() view returns(uint256)
-func (_Contracts *ContractsCaller) FeeProportion(opts *bind.CallOpts) (*big.Int, error) {
+func (_Aggregator *AggregatorCaller) FeeProportion(opts *bind.CallOpts) (*big.Int, error) {
 	var out []interface{}
-	err := _Contracts.contract.Call(opts, &out, "feeProportion")
+	err := _Aggregator.contract.Call(opts, &out, "feeProportion")
 
 	if err != nil {
 		return *new(*big.Int), err
@@ -385,23 +385,23 @@ func (_Contracts *ContractsCaller) FeeProportion(opts *bind.CallOpts) (*big.Int,
 // FeeProportion is a free data retrieval call binding the contract method 0x2a3ecc41.
 //
 // Solidity: function feeProportion() view returns(uint256)
-func (_Contracts *ContractsSession) FeeProportion() (*big.Int, error) {
-	return _Contracts.Contract.FeeProportion(&_Contracts.CallOpts)
+func (_Aggregator *AggregatorSession) FeeProportion() (*big.Int, error) {
+	return _Aggregator.Contract.FeeProportion(&_Aggregator.CallOpts)
 }
 
 // FeeProportion is a free data retrieval call binding the contract method 0x2a3ecc41.
 //
 // Solidity: function feeProportion() view returns(uint256)
-func (_Contracts *ContractsCallerSession) FeeProportion() (*big.Int, error) {
-	return _Contracts.Contract.FeeProportion(&_Contracts.CallOpts)
+func (_Aggregator *AggregatorCallerSession) FeeProportion() (*big.Int, error) {
+	return _Aggregator.Contract.FeeProportion(&_Aggregator.CallOpts)
 }
 
 // HashExecution is a free data retrieval call binding the contract method 0xcb69ec2f.
 //
 // Solidity: function hashExecution((address,uint256,(address,uint256)[],(address,uint256)[],(uint256,(address,uint256)[],bytes,bytes)[]) execution) view returns(bytes32)
-func (_Contracts *ContractsCaller) HashExecution(opts *bind.CallOpts, execution ExecutionVerifierExecution) ([32]byte, error) {
+func (_Aggregator *AggregatorCaller) HashExecution(opts *bind.CallOpts, execution ExecutionVerifierExecution) ([32]byte, error) {
 	var out []interface{}
-	err := _Contracts.contract.Call(opts, &out, "hashExecution", execution)
+	err := _Aggregator.contract.Call(opts, &out, "hashExecution", execution)
 
 	if err != nil {
 		return *new([32]byte), err
@@ -416,23 +416,23 @@ func (_Contracts *ContractsCaller) HashExecution(opts *bind.CallOpts, execution 
 // HashExecution is a free data retrieval call binding the contract method 0xcb69ec2f.
 //
 // Solidity: function hashExecution((address,uint256,(address,uint256)[],(address,uint256)[],(uint256,(address,uint256)[],bytes,bytes)[]) execution) view returns(bytes32)
-func (_Contracts *ContractsSession) HashExecution(execution ExecutionVerifierExecution) ([32]byte, error) {
-	return _Contracts.Contract.HashExecution(&_Contracts.CallOpts, execution)
+func (_Aggregator *AggregatorSession) HashExecution(execution ExecutionVerifierExecution) ([32]byte, error) {
+	return _Aggregator.Contract.HashExecution(&_Aggregator.CallOpts, execution)
 }
 
 // HashExecution is a free data retrieval call binding the contract method 0xcb69ec2f.
 //
 // Solidity: function hashExecution((address,uint256,(address,uint256)[],(address,uint256)[],(uint256,(address,uint256)[],bytes,bytes)[]) execution) view returns(bytes32)
-func (_Contracts *ContractsCallerSession) HashExecution(execution ExecutionVerifierExecution) ([32]byte, error) {
-	return _Contracts.Contract.HashExecution(&_Contracts.CallOpts, execution)
+func (_Aggregator *AggregatorCallerSession) HashExecution(execution ExecutionVerifierExecution) ([32]byte, error) {
+	return _Aggregator.Contract.HashExecution(&_Aggregator.CallOpts, execution)
 }
 
 // Nonces is a free data retrieval call binding the contract method 0x7ecebe00.
 //
 // Solidity: function nonces(address owner) view returns(uint256)
-func (_Contracts *ContractsCaller) Nonces(opts *bind.CallOpts, owner common.Address) (*big.Int, error) {
+func (_Aggregator *AggregatorCaller) Nonces(opts *bind.CallOpts, owner common.Address) (*big.Int, error) {
 	var out []interface{}
-	err := _Contracts.contract.Call(opts, &out, "nonces", owner)
+	err := _Aggregator.contract.Call(opts, &out, "nonces", owner)
 
 	if err != nil {
 		return *new(*big.Int), err
@@ -447,23 +447,23 @@ func (_Contracts *ContractsCaller) Nonces(opts *bind.CallOpts, owner common.Addr
 // Nonces is a free data retrieval call binding the contract method 0x7ecebe00.
 //
 // Solidity: function nonces(address owner) view returns(uint256)
-func (_Contracts *ContractsSession) Nonces(owner common.Address) (*big.Int, error) {
-	return _Contracts.Contract.Nonces(&_Contracts.CallOpts, owner)
+func (_Aggregator *AggregatorSession) Nonces(owner common.Address) (*big.Int, error) {
+	return _Aggregator.Contract.Nonces(&_Aggregator.CallOpts, owner)
 }
 
 // Nonces is a free data retrieval call binding the contract method 0x7ecebe00.
 //
 // Solidity: function nonces(address owner) view returns(uint256)
-func (_Contracts *ContractsCallerSession) Nonces(owner common.Address) (*big.Int, error) {
-	return _Contracts.Contract.Nonces(&_Contracts.CallOpts, owner)
+func (_Aggregator *AggregatorCallerSession) Nonces(owner common.Address) (*big.Int, error) {
+	return _Aggregator.Contract.Nonces(&_Aggregator.CallOpts, owner)
 }
 
 // Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
 //
 // Solidity: function owner() view returns(address)
-func (_Contracts *ContractsCaller) Owner(opts *bind.CallOpts) (common.Address, error) {
+func (_Aggregator *AggregatorCaller) Owner(opts *bind.CallOpts) (common.Address, error) {
 	var out []interface{}
-	err := _Contracts.contract.Call(opts, &out, "owner")
+	err := _Aggregator.contract.Call(opts, &out, "owner")
 
 	if err != nil {
 		return *new(common.Address), err
@@ -478,23 +478,23 @@ func (_Contracts *ContractsCaller) Owner(opts *bind.CallOpts) (common.Address, e
 // Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
 //
 // Solidity: function owner() view returns(address)
-func (_Contracts *ContractsSession) Owner() (common.Address, error) {
-	return _Contracts.Contract.Owner(&_Contracts.CallOpts)
+func (_Aggregator *AggregatorSession) Owner() (common.Address, error) {
+	return _Aggregator.Contract.Owner(&_Aggregator.CallOpts)
 }
 
 // Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
 //
 // Solidity: function owner() view returns(address)
-func (_Contracts *ContractsCallerSession) Owner() (common.Address, error) {
-	return _Contracts.Contract.Owner(&_Contracts.CallOpts)
+func (_Aggregator *AggregatorCallerSession) Owner() (common.Address, error) {
+	return _Aggregator.Contract.Owner(&_Aggregator.CallOpts)
 }
 
 // Paused is a free data retrieval call binding the contract method 0x5c975abb.
 //
 // Solidity: function paused() view returns(bool)
-func (_Contracts *ContractsCaller) Paused(opts *bind.CallOpts) (bool, error) {
+func (_Aggregator *AggregatorCaller) Paused(opts *bind.CallOpts) (bool, error) {
 	var out []interface{}
-	err := _Contracts.contract.Call(opts, &out, "paused")
+	err := _Aggregator.contract.Call(opts, &out, "paused")
 
 	if err != nil {
 		return *new(bool), err
@@ -509,23 +509,23 @@ func (_Contracts *ContractsCaller) Paused(opts *bind.CallOpts) (bool, error) {
 // Paused is a free data retrieval call binding the contract method 0x5c975abb.
 //
 // Solidity: function paused() view returns(bool)
-func (_Contracts *ContractsSession) Paused() (bool, error) {
-	return _Contracts.Contract.Paused(&_Contracts.CallOpts)
+func (_Aggregator *AggregatorSession) Paused() (bool, error) {
+	return _Aggregator.Contract.Paused(&_Aggregator.CallOpts)
 }
 
 // Paused is a free data retrieval call binding the contract method 0x5c975abb.
 //
 // Solidity: function paused() view returns(bool)
-func (_Contracts *ContractsCallerSession) Paused() (bool, error) {
-	return _Contracts.Contract.Paused(&_Contracts.CallOpts)
+func (_Aggregator *AggregatorCallerSession) Paused() (bool, error) {
+	return _Aggregator.Contract.Paused(&_Aggregator.CallOpts)
 }
 
 // Pauser is a free data retrieval call binding the contract method 0x9fd0506d.
 //
 // Solidity: function pauser() view returns(address)
-func (_Contracts *ContractsCaller) Pauser(opts *bind.CallOpts) (common.Address, error) {
+func (_Aggregator *AggregatorCaller) Pauser(opts *bind.CallOpts) (common.Address, error) {
 	var out []interface{}
-	err := _Contracts.contract.Call(opts, &out, "pauser")
+	err := _Aggregator.contract.Call(opts, &out, "pauser")
 
 	if err != nil {
 		return *new(common.Address), err
@@ -540,209 +540,209 @@ func (_Contracts *ContractsCaller) Pauser(opts *bind.CallOpts) (common.Address, 
 // Pauser is a free data retrieval call binding the contract method 0x9fd0506d.
 //
 // Solidity: function pauser() view returns(address)
-func (_Contracts *ContractsSession) Pauser() (common.Address, error) {
-	return _Contracts.Contract.Pauser(&_Contracts.CallOpts)
+func (_Aggregator *AggregatorSession) Pauser() (common.Address, error) {
+	return _Aggregator.Contract.Pauser(&_Aggregator.CallOpts)
 }
 
 // Pauser is a free data retrieval call binding the contract method 0x9fd0506d.
 //
 // Solidity: function pauser() view returns(address)
-func (_Contracts *ContractsCallerSession) Pauser() (common.Address, error) {
-	return _Contracts.Contract.Pauser(&_Contracts.CallOpts)
+func (_Aggregator *AggregatorCallerSession) Pauser() (common.Address, error) {
+	return _Aggregator.Contract.Pauser(&_Aggregator.CallOpts)
 }
 
 // Execute is a paid mutator transaction binding the contract method 0x8f73f125.
 //
 // Solidity: function execute((address,uint256)[] sellTokens, (address,uint256)[] buyTokens, (uint256,(address,uint256)[],bytes,bytes)[] routes) payable returns()
-func (_Contracts *ContractsTransactor) Execute(opts *bind.TransactOpts, sellTokens []ExecutionVerifierTokenDetail, buyTokens []ExecutionVerifierTokenDetail, routes []ExecutionVerifierRoute) (*types.Transaction, error) {
-	return _Contracts.contract.Transact(opts, "execute", sellTokens, buyTokens, routes)
+func (_Aggregator *AggregatorTransactor) Execute(opts *bind.TransactOpts, sellTokens []ExecutionVerifierTokenDetail, buyTokens []ExecutionVerifierTokenDetail, routes []ExecutionVerifierRoute) (*types.Transaction, error) {
+	return _Aggregator.contract.Transact(opts, "execute", sellTokens, buyTokens, routes)
 }
 
 // Execute is a paid mutator transaction binding the contract method 0x8f73f125.
 //
 // Solidity: function execute((address,uint256)[] sellTokens, (address,uint256)[] buyTokens, (uint256,(address,uint256)[],bytes,bytes)[] routes) payable returns()
-func (_Contracts *ContractsSession) Execute(sellTokens []ExecutionVerifierTokenDetail, buyTokens []ExecutionVerifierTokenDetail, routes []ExecutionVerifierRoute) (*types.Transaction, error) {
-	return _Contracts.Contract.Execute(&_Contracts.TransactOpts, sellTokens, buyTokens, routes)
+func (_Aggregator *AggregatorSession) Execute(sellTokens []ExecutionVerifierTokenDetail, buyTokens []ExecutionVerifierTokenDetail, routes []ExecutionVerifierRoute) (*types.Transaction, error) {
+	return _Aggregator.Contract.Execute(&_Aggregator.TransactOpts, sellTokens, buyTokens, routes)
 }
 
 // Execute is a paid mutator transaction binding the contract method 0x8f73f125.
 //
 // Solidity: function execute((address,uint256)[] sellTokens, (address,uint256)[] buyTokens, (uint256,(address,uint256)[],bytes,bytes)[] routes) payable returns()
-func (_Contracts *ContractsTransactorSession) Execute(sellTokens []ExecutionVerifierTokenDetail, buyTokens []ExecutionVerifierTokenDetail, routes []ExecutionVerifierRoute) (*types.Transaction, error) {
-	return _Contracts.Contract.Execute(&_Contracts.TransactOpts, sellTokens, buyTokens, routes)
+func (_Aggregator *AggregatorTransactorSession) Execute(sellTokens []ExecutionVerifierTokenDetail, buyTokens []ExecutionVerifierTokenDetail, routes []ExecutionVerifierRoute) (*types.Transaction, error) {
+	return _Aggregator.Contract.Execute(&_Aggregator.TransactOpts, sellTokens, buyTokens, routes)
 }
 
 // Execute0 is a paid mutator transaction binding the contract method 0xd6c04e5f.
 //
 // Solidity: function execute(address user, (address,uint256)[] sellTokens, (address,uint256)[] buyTokens, (uint256,(address,uint256)[],bytes,bytes)[] routes, bytes signature) payable returns()
-func (_Contracts *ContractsTransactor) Execute0(opts *bind.TransactOpts, user common.Address, sellTokens []ExecutionVerifierTokenDetail, buyTokens []ExecutionVerifierTokenDetail, routes []ExecutionVerifierRoute, signature []byte) (*types.Transaction, error) {
-	return _Contracts.contract.Transact(opts, "execute0", user, sellTokens, buyTokens, routes, signature)
+func (_Aggregator *AggregatorTransactor) Execute0(opts *bind.TransactOpts, user common.Address, sellTokens []ExecutionVerifierTokenDetail, buyTokens []ExecutionVerifierTokenDetail, routes []ExecutionVerifierRoute, signature []byte) (*types.Transaction, error) {
+	return _Aggregator.contract.Transact(opts, "execute0", user, sellTokens, buyTokens, routes, signature)
 }
 
 // Execute0 is a paid mutator transaction binding the contract method 0xd6c04e5f.
 //
 // Solidity: function execute(address user, (address,uint256)[] sellTokens, (address,uint256)[] buyTokens, (uint256,(address,uint256)[],bytes,bytes)[] routes, bytes signature) payable returns()
-func (_Contracts *ContractsSession) Execute0(user common.Address, sellTokens []ExecutionVerifierTokenDetail, buyTokens []ExecutionVerifierTokenDetail, routes []ExecutionVerifierRoute, signature []byte) (*types.Transaction, error) {
-	return _Contracts.Contract.Execute0(&_Contracts.TransactOpts, user, sellTokens, buyTokens, routes, signature)
+func (_Aggregator *AggregatorSession) Execute0(user common.Address, sellTokens []ExecutionVerifierTokenDetail, buyTokens []ExecutionVerifierTokenDetail, routes []ExecutionVerifierRoute, signature []byte) (*types.Transaction, error) {
+	return _Aggregator.Contract.Execute0(&_Aggregator.TransactOpts, user, sellTokens, buyTokens, routes, signature)
 }
 
 // Execute0 is a paid mutator transaction binding the contract method 0xd6c04e5f.
 //
 // Solidity: function execute(address user, (address,uint256)[] sellTokens, (address,uint256)[] buyTokens, (uint256,(address,uint256)[],bytes,bytes)[] routes, bytes signature) payable returns()
-func (_Contracts *ContractsTransactorSession) Execute0(user common.Address, sellTokens []ExecutionVerifierTokenDetail, buyTokens []ExecutionVerifierTokenDetail, routes []ExecutionVerifierRoute, signature []byte) (*types.Transaction, error) {
-	return _Contracts.Contract.Execute0(&_Contracts.TransactOpts, user, sellTokens, buyTokens, routes, signature)
+func (_Aggregator *AggregatorTransactorSession) Execute0(user common.Address, sellTokens []ExecutionVerifierTokenDetail, buyTokens []ExecutionVerifierTokenDetail, routes []ExecutionVerifierRoute, signature []byte) (*types.Transaction, error) {
+	return _Aggregator.Contract.Execute0(&_Aggregator.TransactOpts, user, sellTokens, buyTokens, routes, signature)
 }
 
 // Pause is a paid mutator transaction binding the contract method 0x8456cb59.
 //
 // Solidity: function pause() returns()
-func (_Contracts *ContractsTransactor) Pause(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Contracts.contract.Transact(opts, "pause")
+func (_Aggregator *AggregatorTransactor) Pause(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _Aggregator.contract.Transact(opts, "pause")
 }
 
 // Pause is a paid mutator transaction binding the contract method 0x8456cb59.
 //
 // Solidity: function pause() returns()
-func (_Contracts *ContractsSession) Pause() (*types.Transaction, error) {
-	return _Contracts.Contract.Pause(&_Contracts.TransactOpts)
+func (_Aggregator *AggregatorSession) Pause() (*types.Transaction, error) {
+	return _Aggregator.Contract.Pause(&_Aggregator.TransactOpts)
 }
 
 // Pause is a paid mutator transaction binding the contract method 0x8456cb59.
 //
 // Solidity: function pause() returns()
-func (_Contracts *ContractsTransactorSession) Pause() (*types.Transaction, error) {
-	return _Contracts.Contract.Pause(&_Contracts.TransactOpts)
+func (_Aggregator *AggregatorTransactorSession) Pause() (*types.Transaction, error) {
+	return _Aggregator.Contract.Pause(&_Aggregator.TransactOpts)
 }
 
 // RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
 //
 // Solidity: function renounceOwnership() returns()
-func (_Contracts *ContractsTransactor) RenounceOwnership(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Contracts.contract.Transact(opts, "renounceOwnership")
+func (_Aggregator *AggregatorTransactor) RenounceOwnership(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _Aggregator.contract.Transact(opts, "renounceOwnership")
 }
 
 // RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
 //
 // Solidity: function renounceOwnership() returns()
-func (_Contracts *ContractsSession) RenounceOwnership() (*types.Transaction, error) {
-	return _Contracts.Contract.RenounceOwnership(&_Contracts.TransactOpts)
+func (_Aggregator *AggregatorSession) RenounceOwnership() (*types.Transaction, error) {
+	return _Aggregator.Contract.RenounceOwnership(&_Aggregator.TransactOpts)
 }
 
 // RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
 //
 // Solidity: function renounceOwnership() returns()
-func (_Contracts *ContractsTransactorSession) RenounceOwnership() (*types.Transaction, error) {
-	return _Contracts.Contract.RenounceOwnership(&_Contracts.TransactOpts)
+func (_Aggregator *AggregatorTransactorSession) RenounceOwnership() (*types.Transaction, error) {
+	return _Aggregator.Contract.RenounceOwnership(&_Aggregator.TransactOpts)
 }
 
 // SetFeeProportion is a paid mutator transaction binding the contract method 0x8e16ac45.
 //
 // Solidity: function setFeeProportion(uint256 _feeProportion) returns()
-func (_Contracts *ContractsTransactor) SetFeeProportion(opts *bind.TransactOpts, _feeProportion *big.Int) (*types.Transaction, error) {
-	return _Contracts.contract.Transact(opts, "setFeeProportion", _feeProportion)
+func (_Aggregator *AggregatorTransactor) SetFeeProportion(opts *bind.TransactOpts, _feeProportion *big.Int) (*types.Transaction, error) {
+	return _Aggregator.contract.Transact(opts, "setFeeProportion", _feeProportion)
 }
 
 // SetFeeProportion is a paid mutator transaction binding the contract method 0x8e16ac45.
 //
 // Solidity: function setFeeProportion(uint256 _feeProportion) returns()
-func (_Contracts *ContractsSession) SetFeeProportion(_feeProportion *big.Int) (*types.Transaction, error) {
-	return _Contracts.Contract.SetFeeProportion(&_Contracts.TransactOpts, _feeProportion)
+func (_Aggregator *AggregatorSession) SetFeeProportion(_feeProportion *big.Int) (*types.Transaction, error) {
+	return _Aggregator.Contract.SetFeeProportion(&_Aggregator.TransactOpts, _feeProportion)
 }
 
 // SetFeeProportion is a paid mutator transaction binding the contract method 0x8e16ac45.
 //
 // Solidity: function setFeeProportion(uint256 _feeProportion) returns()
-func (_Contracts *ContractsTransactorSession) SetFeeProportion(_feeProportion *big.Int) (*types.Transaction, error) {
-	return _Contracts.Contract.SetFeeProportion(&_Contracts.TransactOpts, _feeProportion)
+func (_Aggregator *AggregatorTransactorSession) SetFeeProportion(_feeProportion *big.Int) (*types.Transaction, error) {
+	return _Aggregator.Contract.SetFeeProportion(&_Aggregator.TransactOpts, _feeProportion)
 }
 
 // SetProcessor is a paid mutator transaction binding the contract method 0x15898b2e.
 //
 // Solidity: function setProcessor(uint256 index, address processor) returns()
-func (_Contracts *ContractsTransactor) SetProcessor(opts *bind.TransactOpts, index *big.Int, processor common.Address) (*types.Transaction, error) {
-	return _Contracts.contract.Transact(opts, "setProcessor", index, processor)
+func (_Aggregator *AggregatorTransactor) SetProcessor(opts *bind.TransactOpts, index *big.Int, processor common.Address) (*types.Transaction, error) {
+	return _Aggregator.contract.Transact(opts, "setProcessor", index, processor)
 }
 
 // SetProcessor is a paid mutator transaction binding the contract method 0x15898b2e.
 //
 // Solidity: function setProcessor(uint256 index, address processor) returns()
-func (_Contracts *ContractsSession) SetProcessor(index *big.Int, processor common.Address) (*types.Transaction, error) {
-	return _Contracts.Contract.SetProcessor(&_Contracts.TransactOpts, index, processor)
+func (_Aggregator *AggregatorSession) SetProcessor(index *big.Int, processor common.Address) (*types.Transaction, error) {
+	return _Aggregator.Contract.SetProcessor(&_Aggregator.TransactOpts, index, processor)
 }
 
 // SetProcessor is a paid mutator transaction binding the contract method 0x15898b2e.
 //
 // Solidity: function setProcessor(uint256 index, address processor) returns()
-func (_Contracts *ContractsTransactorSession) SetProcessor(index *big.Int, processor common.Address) (*types.Transaction, error) {
-	return _Contracts.Contract.SetProcessor(&_Contracts.TransactOpts, index, processor)
+func (_Aggregator *AggregatorTransactorSession) SetProcessor(index *big.Int, processor common.Address) (*types.Transaction, error) {
+	return _Aggregator.Contract.SetProcessor(&_Aggregator.TransactOpts, index, processor)
 }
 
 // SetUserBlacklist is a paid mutator transaction binding the contract method 0xccddf0b0.
 //
 // Solidity: function setUserBlacklist(address user, bool isBlacklisted) returns()
-func (_Contracts *ContractsTransactor) SetUserBlacklist(opts *bind.TransactOpts, user common.Address, isBlacklisted bool) (*types.Transaction, error) {
-	return _Contracts.contract.Transact(opts, "setUserBlacklist", user, isBlacklisted)
+func (_Aggregator *AggregatorTransactor) SetUserBlacklist(opts *bind.TransactOpts, user common.Address, isBlacklisted bool) (*types.Transaction, error) {
+	return _Aggregator.contract.Transact(opts, "setUserBlacklist", user, isBlacklisted)
 }
 
 // SetUserBlacklist is a paid mutator transaction binding the contract method 0xccddf0b0.
 //
 // Solidity: function setUserBlacklist(address user, bool isBlacklisted) returns()
-func (_Contracts *ContractsSession) SetUserBlacklist(user common.Address, isBlacklisted bool) (*types.Transaction, error) {
-	return _Contracts.Contract.SetUserBlacklist(&_Contracts.TransactOpts, user, isBlacklisted)
+func (_Aggregator *AggregatorSession) SetUserBlacklist(user common.Address, isBlacklisted bool) (*types.Transaction, error) {
+	return _Aggregator.Contract.SetUserBlacklist(&_Aggregator.TransactOpts, user, isBlacklisted)
 }
 
 // SetUserBlacklist is a paid mutator transaction binding the contract method 0xccddf0b0.
 //
 // Solidity: function setUserBlacklist(address user, bool isBlacklisted) returns()
-func (_Contracts *ContractsTransactorSession) SetUserBlacklist(user common.Address, isBlacklisted bool) (*types.Transaction, error) {
-	return _Contracts.Contract.SetUserBlacklist(&_Contracts.TransactOpts, user, isBlacklisted)
+func (_Aggregator *AggregatorTransactorSession) SetUserBlacklist(user common.Address, isBlacklisted bool) (*types.Transaction, error) {
+	return _Aggregator.Contract.SetUserBlacklist(&_Aggregator.TransactOpts, user, isBlacklisted)
 }
 
 // TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
 //
 // Solidity: function transferOwnership(address newOwner) returns()
-func (_Contracts *ContractsTransactor) TransferOwnership(opts *bind.TransactOpts, newOwner common.Address) (*types.Transaction, error) {
-	return _Contracts.contract.Transact(opts, "transferOwnership", newOwner)
+func (_Aggregator *AggregatorTransactor) TransferOwnership(opts *bind.TransactOpts, newOwner common.Address) (*types.Transaction, error) {
+	return _Aggregator.contract.Transact(opts, "transferOwnership", newOwner)
 }
 
 // TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
 //
 // Solidity: function transferOwnership(address newOwner) returns()
-func (_Contracts *ContractsSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
-	return _Contracts.Contract.TransferOwnership(&_Contracts.TransactOpts, newOwner)
+func (_Aggregator *AggregatorSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
+	return _Aggregator.Contract.TransferOwnership(&_Aggregator.TransactOpts, newOwner)
 }
 
 // TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
 //
 // Solidity: function transferOwnership(address newOwner) returns()
-func (_Contracts *ContractsTransactorSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
-	return _Contracts.Contract.TransferOwnership(&_Contracts.TransactOpts, newOwner)
+func (_Aggregator *AggregatorTransactorSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
+	return _Aggregator.Contract.TransferOwnership(&_Aggregator.TransactOpts, newOwner)
 }
 
 // Unpause is a paid mutator transaction binding the contract method 0x3f4ba83a.
 //
 // Solidity: function unpause() returns()
-func (_Contracts *ContractsTransactor) Unpause(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _Contracts.contract.Transact(opts, "unpause")
+func (_Aggregator *AggregatorTransactor) Unpause(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _Aggregator.contract.Transact(opts, "unpause")
 }
 
 // Unpause is a paid mutator transaction binding the contract method 0x3f4ba83a.
 //
 // Solidity: function unpause() returns()
-func (_Contracts *ContractsSession) Unpause() (*types.Transaction, error) {
-	return _Contracts.Contract.Unpause(&_Contracts.TransactOpts)
+func (_Aggregator *AggregatorSession) Unpause() (*types.Transaction, error) {
+	return _Aggregator.Contract.Unpause(&_Aggregator.TransactOpts)
 }
 
 // Unpause is a paid mutator transaction binding the contract method 0x3f4ba83a.
 //
 // Solidity: function unpause() returns()
-func (_Contracts *ContractsTransactorSession) Unpause() (*types.Transaction, error) {
-	return _Contracts.Contract.Unpause(&_Contracts.TransactOpts)
+func (_Aggregator *AggregatorTransactorSession) Unpause() (*types.Transaction, error) {
+	return _Aggregator.Contract.Unpause(&_Aggregator.TransactOpts)
 }
 
-// ContractsEIP712DomainChangedIterator is returned from FilterEIP712DomainChanged and is used to iterate over the raw logs and unpacked data for EIP712DomainChanged events raised by the Contracts contract.
-type ContractsEIP712DomainChangedIterator struct {
-	Event *ContractsEIP712DomainChanged // Event containing the contract specifics and raw log
+// AggregatorEIP712DomainChangedIterator is returned from FilterEIP712DomainChanged and is used to iterate over the raw logs and unpacked data for EIP712DomainChanged events raised by the Aggregator contract.
+type AggregatorEIP712DomainChangedIterator struct {
+	Event *AggregatorEIP712DomainChanged // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -756,7 +756,7 @@ type ContractsEIP712DomainChangedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *ContractsEIP712DomainChangedIterator) Next() bool {
+func (it *AggregatorEIP712DomainChangedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -765,7 +765,7 @@ func (it *ContractsEIP712DomainChangedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(ContractsEIP712DomainChanged)
+			it.Event = new(AggregatorEIP712DomainChanged)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -780,7 +780,7 @@ func (it *ContractsEIP712DomainChangedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(ContractsEIP712DomainChanged)
+		it.Event = new(AggregatorEIP712DomainChanged)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -796,40 +796,40 @@ func (it *ContractsEIP712DomainChangedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *ContractsEIP712DomainChangedIterator) Error() error {
+func (it *AggregatorEIP712DomainChangedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *ContractsEIP712DomainChangedIterator) Close() error {
+func (it *AggregatorEIP712DomainChangedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// ContractsEIP712DomainChanged represents a EIP712DomainChanged event raised by the Contracts contract.
-type ContractsEIP712DomainChanged struct {
+// AggregatorEIP712DomainChanged represents a EIP712DomainChanged event raised by the Aggregator contract.
+type AggregatorEIP712DomainChanged struct {
 	Raw types.Log // Blockchain specific contextual infos
 }
 
 // FilterEIP712DomainChanged is a free log retrieval operation binding the contract event 0x0a6387c9ea3628b88a633bb4f3b151770f70085117a15f9bf3787cda53f13d31.
 //
 // Solidity: event EIP712DomainChanged()
-func (_Contracts *ContractsFilterer) FilterEIP712DomainChanged(opts *bind.FilterOpts) (*ContractsEIP712DomainChangedIterator, error) {
+func (_Aggregator *AggregatorFilterer) FilterEIP712DomainChanged(opts *bind.FilterOpts) (*AggregatorEIP712DomainChangedIterator, error) {
 
-	logs, sub, err := _Contracts.contract.FilterLogs(opts, "EIP712DomainChanged")
+	logs, sub, err := _Aggregator.contract.FilterLogs(opts, "EIP712DomainChanged")
 	if err != nil {
 		return nil, err
 	}
-	return &ContractsEIP712DomainChangedIterator{contract: _Contracts.contract, event: "EIP712DomainChanged", logs: logs, sub: sub}, nil
+	return &AggregatorEIP712DomainChangedIterator{contract: _Aggregator.contract, event: "EIP712DomainChanged", logs: logs, sub: sub}, nil
 }
 
 // WatchEIP712DomainChanged is a free log subscription operation binding the contract event 0x0a6387c9ea3628b88a633bb4f3b151770f70085117a15f9bf3787cda53f13d31.
 //
 // Solidity: event EIP712DomainChanged()
-func (_Contracts *ContractsFilterer) WatchEIP712DomainChanged(opts *bind.WatchOpts, sink chan<- *ContractsEIP712DomainChanged) (event.Subscription, error) {
+func (_Aggregator *AggregatorFilterer) WatchEIP712DomainChanged(opts *bind.WatchOpts, sink chan<- *AggregatorEIP712DomainChanged) (event.Subscription, error) {
 
-	logs, sub, err := _Contracts.contract.WatchLogs(opts, "EIP712DomainChanged")
+	logs, sub, err := _Aggregator.contract.WatchLogs(opts, "EIP712DomainChanged")
 	if err != nil {
 		return nil, err
 	}
@@ -839,8 +839,8 @@ func (_Contracts *ContractsFilterer) WatchEIP712DomainChanged(opts *bind.WatchOp
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(ContractsEIP712DomainChanged)
-				if err := _Contracts.contract.UnpackLog(event, "EIP712DomainChanged", log); err != nil {
+				event := new(AggregatorEIP712DomainChanged)
+				if err := _Aggregator.contract.UnpackLog(event, "EIP712DomainChanged", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -864,18 +864,18 @@ func (_Contracts *ContractsFilterer) WatchEIP712DomainChanged(opts *bind.WatchOp
 // ParseEIP712DomainChanged is a log parse operation binding the contract event 0x0a6387c9ea3628b88a633bb4f3b151770f70085117a15f9bf3787cda53f13d31.
 //
 // Solidity: event EIP712DomainChanged()
-func (_Contracts *ContractsFilterer) ParseEIP712DomainChanged(log types.Log) (*ContractsEIP712DomainChanged, error) {
-	event := new(ContractsEIP712DomainChanged)
-	if err := _Contracts.contract.UnpackLog(event, "EIP712DomainChanged", log); err != nil {
+func (_Aggregator *AggregatorFilterer) ParseEIP712DomainChanged(log types.Log) (*AggregatorEIP712DomainChanged, error) {
+	event := new(AggregatorEIP712DomainChanged)
+	if err := _Aggregator.contract.UnpackLog(event, "EIP712DomainChanged", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// ContractsExecutedIterator is returned from FilterExecuted and is used to iterate over the raw logs and unpacked data for Executed events raised by the Contracts contract.
-type ContractsExecutedIterator struct {
-	Event *ContractsExecuted // Event containing the contract specifics and raw log
+// AggregatorExecutedIterator is returned from FilterExecuted and is used to iterate over the raw logs and unpacked data for Executed events raised by the Aggregator contract.
+type AggregatorExecutedIterator struct {
+	Event *AggregatorExecuted // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -889,7 +889,7 @@ type ContractsExecutedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *ContractsExecutedIterator) Next() bool {
+func (it *AggregatorExecutedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -898,7 +898,7 @@ func (it *ContractsExecutedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(ContractsExecuted)
+			it.Event = new(AggregatorExecuted)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -913,7 +913,7 @@ func (it *ContractsExecutedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(ContractsExecuted)
+		it.Event = new(AggregatorExecuted)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -929,19 +929,19 @@ func (it *ContractsExecutedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *ContractsExecutedIterator) Error() error {
+func (it *AggregatorExecutedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *ContractsExecutedIterator) Close() error {
+func (it *AggregatorExecutedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// ContractsExecuted represents a Executed event raised by the Contracts contract.
-type ContractsExecuted struct {
+// AggregatorExecuted represents a Executed event raised by the Aggregator contract.
+type AggregatorExecuted struct {
 	User       common.Address
 	SellTokens []ExecutionVerifierTokenDetail
 	BuyTokens  []ExecutionVerifierTokenDetail
@@ -952,31 +952,31 @@ type ContractsExecuted struct {
 // FilterExecuted is a free log retrieval operation binding the contract event 0x86b324412f1ae3de8b6f67889e726a5e6de104beb3ddc456dbff9f9dff8964bb.
 //
 // Solidity: event Executed(address indexed user, (address,uint256)[] sellTokens, (address,uint256)[] buyTokens, (uint256,(address,uint256)[],bytes,bytes)[] routes)
-func (_Contracts *ContractsFilterer) FilterExecuted(opts *bind.FilterOpts, user []common.Address) (*ContractsExecutedIterator, error) {
+func (_Aggregator *AggregatorFilterer) FilterExecuted(opts *bind.FilterOpts, user []common.Address) (*AggregatorExecutedIterator, error) {
 
 	var userRule []interface{}
 	for _, userItem := range user {
 		userRule = append(userRule, userItem)
 	}
 
-	logs, sub, err := _Contracts.contract.FilterLogs(opts, "Executed", userRule)
+	logs, sub, err := _Aggregator.contract.FilterLogs(opts, "Executed", userRule)
 	if err != nil {
 		return nil, err
 	}
-	return &ContractsExecutedIterator{contract: _Contracts.contract, event: "Executed", logs: logs, sub: sub}, nil
+	return &AggregatorExecutedIterator{contract: _Aggregator.contract, event: "Executed", logs: logs, sub: sub}, nil
 }
 
 // WatchExecuted is a free log subscription operation binding the contract event 0x86b324412f1ae3de8b6f67889e726a5e6de104beb3ddc456dbff9f9dff8964bb.
 //
 // Solidity: event Executed(address indexed user, (address,uint256)[] sellTokens, (address,uint256)[] buyTokens, (uint256,(address,uint256)[],bytes,bytes)[] routes)
-func (_Contracts *ContractsFilterer) WatchExecuted(opts *bind.WatchOpts, sink chan<- *ContractsExecuted, user []common.Address) (event.Subscription, error) {
+func (_Aggregator *AggregatorFilterer) WatchExecuted(opts *bind.WatchOpts, sink chan<- *AggregatorExecuted, user []common.Address) (event.Subscription, error) {
 
 	var userRule []interface{}
 	for _, userItem := range user {
 		userRule = append(userRule, userItem)
 	}
 
-	logs, sub, err := _Contracts.contract.WatchLogs(opts, "Executed", userRule)
+	logs, sub, err := _Aggregator.contract.WatchLogs(opts, "Executed", userRule)
 	if err != nil {
 		return nil, err
 	}
@@ -986,8 +986,8 @@ func (_Contracts *ContractsFilterer) WatchExecuted(opts *bind.WatchOpts, sink ch
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(ContractsExecuted)
-				if err := _Contracts.contract.UnpackLog(event, "Executed", log); err != nil {
+				event := new(AggregatorExecuted)
+				if err := _Aggregator.contract.UnpackLog(event, "Executed", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1011,18 +1011,18 @@ func (_Contracts *ContractsFilterer) WatchExecuted(opts *bind.WatchOpts, sink ch
 // ParseExecuted is a log parse operation binding the contract event 0x86b324412f1ae3de8b6f67889e726a5e6de104beb3ddc456dbff9f9dff8964bb.
 //
 // Solidity: event Executed(address indexed user, (address,uint256)[] sellTokens, (address,uint256)[] buyTokens, (uint256,(address,uint256)[],bytes,bytes)[] routes)
-func (_Contracts *ContractsFilterer) ParseExecuted(log types.Log) (*ContractsExecuted, error) {
-	event := new(ContractsExecuted)
-	if err := _Contracts.contract.UnpackLog(event, "Executed", log); err != nil {
+func (_Aggregator *AggregatorFilterer) ParseExecuted(log types.Log) (*AggregatorExecuted, error) {
+	event := new(AggregatorExecuted)
+	if err := _Aggregator.contract.UnpackLog(event, "Executed", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// ContractsOwnershipTransferredIterator is returned from FilterOwnershipTransferred and is used to iterate over the raw logs and unpacked data for OwnershipTransferred events raised by the Contracts contract.
-type ContractsOwnershipTransferredIterator struct {
-	Event *ContractsOwnershipTransferred // Event containing the contract specifics and raw log
+// AggregatorOwnershipTransferredIterator is returned from FilterOwnershipTransferred and is used to iterate over the raw logs and unpacked data for OwnershipTransferred events raised by the Aggregator contract.
+type AggregatorOwnershipTransferredIterator struct {
+	Event *AggregatorOwnershipTransferred // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -1036,7 +1036,7 @@ type ContractsOwnershipTransferredIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *ContractsOwnershipTransferredIterator) Next() bool {
+func (it *AggregatorOwnershipTransferredIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1045,7 +1045,7 @@ func (it *ContractsOwnershipTransferredIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(ContractsOwnershipTransferred)
+			it.Event = new(AggregatorOwnershipTransferred)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1060,7 +1060,7 @@ func (it *ContractsOwnershipTransferredIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(ContractsOwnershipTransferred)
+		it.Event = new(AggregatorOwnershipTransferred)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1076,19 +1076,19 @@ func (it *ContractsOwnershipTransferredIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *ContractsOwnershipTransferredIterator) Error() error {
+func (it *AggregatorOwnershipTransferredIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *ContractsOwnershipTransferredIterator) Close() error {
+func (it *AggregatorOwnershipTransferredIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// ContractsOwnershipTransferred represents a OwnershipTransferred event raised by the Contracts contract.
-type ContractsOwnershipTransferred struct {
+// AggregatorOwnershipTransferred represents a OwnershipTransferred event raised by the Aggregator contract.
+type AggregatorOwnershipTransferred struct {
 	PreviousOwner common.Address
 	NewOwner      common.Address
 	Raw           types.Log // Blockchain specific contextual infos
@@ -1097,7 +1097,7 @@ type ContractsOwnershipTransferred struct {
 // FilterOwnershipTransferred is a free log retrieval operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
 //
 // Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
-func (_Contracts *ContractsFilterer) FilterOwnershipTransferred(opts *bind.FilterOpts, previousOwner []common.Address, newOwner []common.Address) (*ContractsOwnershipTransferredIterator, error) {
+func (_Aggregator *AggregatorFilterer) FilterOwnershipTransferred(opts *bind.FilterOpts, previousOwner []common.Address, newOwner []common.Address) (*AggregatorOwnershipTransferredIterator, error) {
 
 	var previousOwnerRule []interface{}
 	for _, previousOwnerItem := range previousOwner {
@@ -1108,17 +1108,17 @@ func (_Contracts *ContractsFilterer) FilterOwnershipTransferred(opts *bind.Filte
 		newOwnerRule = append(newOwnerRule, newOwnerItem)
 	}
 
-	logs, sub, err := _Contracts.contract.FilterLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
+	logs, sub, err := _Aggregator.contract.FilterLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
 	if err != nil {
 		return nil, err
 	}
-	return &ContractsOwnershipTransferredIterator{contract: _Contracts.contract, event: "OwnershipTransferred", logs: logs, sub: sub}, nil
+	return &AggregatorOwnershipTransferredIterator{contract: _Aggregator.contract, event: "OwnershipTransferred", logs: logs, sub: sub}, nil
 }
 
 // WatchOwnershipTransferred is a free log subscription operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
 //
 // Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
-func (_Contracts *ContractsFilterer) WatchOwnershipTransferred(opts *bind.WatchOpts, sink chan<- *ContractsOwnershipTransferred, previousOwner []common.Address, newOwner []common.Address) (event.Subscription, error) {
+func (_Aggregator *AggregatorFilterer) WatchOwnershipTransferred(opts *bind.WatchOpts, sink chan<- *AggregatorOwnershipTransferred, previousOwner []common.Address, newOwner []common.Address) (event.Subscription, error) {
 
 	var previousOwnerRule []interface{}
 	for _, previousOwnerItem := range previousOwner {
@@ -1129,7 +1129,7 @@ func (_Contracts *ContractsFilterer) WatchOwnershipTransferred(opts *bind.WatchO
 		newOwnerRule = append(newOwnerRule, newOwnerItem)
 	}
 
-	logs, sub, err := _Contracts.contract.WatchLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
+	logs, sub, err := _Aggregator.contract.WatchLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
 	if err != nil {
 		return nil, err
 	}
@@ -1139,8 +1139,8 @@ func (_Contracts *ContractsFilterer) WatchOwnershipTransferred(opts *bind.WatchO
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(ContractsOwnershipTransferred)
-				if err := _Contracts.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
+				event := new(AggregatorOwnershipTransferred)
+				if err := _Aggregator.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1164,18 +1164,18 @@ func (_Contracts *ContractsFilterer) WatchOwnershipTransferred(opts *bind.WatchO
 // ParseOwnershipTransferred is a log parse operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
 //
 // Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
-func (_Contracts *ContractsFilterer) ParseOwnershipTransferred(log types.Log) (*ContractsOwnershipTransferred, error) {
-	event := new(ContractsOwnershipTransferred)
-	if err := _Contracts.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
+func (_Aggregator *AggregatorFilterer) ParseOwnershipTransferred(log types.Log) (*AggregatorOwnershipTransferred, error) {
+	event := new(AggregatorOwnershipTransferred)
+	if err := _Aggregator.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// ContractsPausedIterator is returned from FilterPaused and is used to iterate over the raw logs and unpacked data for Paused events raised by the Contracts contract.
-type ContractsPausedIterator struct {
-	Event *ContractsPaused // Event containing the contract specifics and raw log
+// AggregatorPausedIterator is returned from FilterPaused and is used to iterate over the raw logs and unpacked data for Paused events raised by the Aggregator contract.
+type AggregatorPausedIterator struct {
+	Event *AggregatorPaused // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -1189,7 +1189,7 @@ type ContractsPausedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *ContractsPausedIterator) Next() bool {
+func (it *AggregatorPausedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1198,7 +1198,7 @@ func (it *ContractsPausedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(ContractsPaused)
+			it.Event = new(AggregatorPaused)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1213,7 +1213,7 @@ func (it *ContractsPausedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(ContractsPaused)
+		it.Event = new(AggregatorPaused)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1229,19 +1229,19 @@ func (it *ContractsPausedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *ContractsPausedIterator) Error() error {
+func (it *AggregatorPausedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *ContractsPausedIterator) Close() error {
+func (it *AggregatorPausedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// ContractsPaused represents a Paused event raised by the Contracts contract.
-type ContractsPaused struct {
+// AggregatorPaused represents a Paused event raised by the Aggregator contract.
+type AggregatorPaused struct {
 	Account common.Address
 	Raw     types.Log // Blockchain specific contextual infos
 }
@@ -1249,21 +1249,21 @@ type ContractsPaused struct {
 // FilterPaused is a free log retrieval operation binding the contract event 0x62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258.
 //
 // Solidity: event Paused(address account)
-func (_Contracts *ContractsFilterer) FilterPaused(opts *bind.FilterOpts) (*ContractsPausedIterator, error) {
+func (_Aggregator *AggregatorFilterer) FilterPaused(opts *bind.FilterOpts) (*AggregatorPausedIterator, error) {
 
-	logs, sub, err := _Contracts.contract.FilterLogs(opts, "Paused")
+	logs, sub, err := _Aggregator.contract.FilterLogs(opts, "Paused")
 	if err != nil {
 		return nil, err
 	}
-	return &ContractsPausedIterator{contract: _Contracts.contract, event: "Paused", logs: logs, sub: sub}, nil
+	return &AggregatorPausedIterator{contract: _Aggregator.contract, event: "Paused", logs: logs, sub: sub}, nil
 }
 
 // WatchPaused is a free log subscription operation binding the contract event 0x62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258.
 //
 // Solidity: event Paused(address account)
-func (_Contracts *ContractsFilterer) WatchPaused(opts *bind.WatchOpts, sink chan<- *ContractsPaused) (event.Subscription, error) {
+func (_Aggregator *AggregatorFilterer) WatchPaused(opts *bind.WatchOpts, sink chan<- *AggregatorPaused) (event.Subscription, error) {
 
-	logs, sub, err := _Contracts.contract.WatchLogs(opts, "Paused")
+	logs, sub, err := _Aggregator.contract.WatchLogs(opts, "Paused")
 	if err != nil {
 		return nil, err
 	}
@@ -1273,8 +1273,8 @@ func (_Contracts *ContractsFilterer) WatchPaused(opts *bind.WatchOpts, sink chan
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(ContractsPaused)
-				if err := _Contracts.contract.UnpackLog(event, "Paused", log); err != nil {
+				event := new(AggregatorPaused)
+				if err := _Aggregator.contract.UnpackLog(event, "Paused", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1298,18 +1298,18 @@ func (_Contracts *ContractsFilterer) WatchPaused(opts *bind.WatchOpts, sink chan
 // ParsePaused is a log parse operation binding the contract event 0x62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258.
 //
 // Solidity: event Paused(address account)
-func (_Contracts *ContractsFilterer) ParsePaused(log types.Log) (*ContractsPaused, error) {
-	event := new(ContractsPaused)
-	if err := _Contracts.contract.UnpackLog(event, "Paused", log); err != nil {
+func (_Aggregator *AggregatorFilterer) ParsePaused(log types.Log) (*AggregatorPaused, error) {
+	event := new(AggregatorPaused)
+	if err := _Aggregator.contract.UnpackLog(event, "Paused", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// ContractsUnpausedIterator is returned from FilterUnpaused and is used to iterate over the raw logs and unpacked data for Unpaused events raised by the Contracts contract.
-type ContractsUnpausedIterator struct {
-	Event *ContractsUnpaused // Event containing the contract specifics and raw log
+// AggregatorUnpausedIterator is returned from FilterUnpaused and is used to iterate over the raw logs and unpacked data for Unpaused events raised by the Aggregator contract.
+type AggregatorUnpausedIterator struct {
+	Event *AggregatorUnpaused // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -1323,7 +1323,7 @@ type ContractsUnpausedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *ContractsUnpausedIterator) Next() bool {
+func (it *AggregatorUnpausedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1332,7 +1332,7 @@ func (it *ContractsUnpausedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(ContractsUnpaused)
+			it.Event = new(AggregatorUnpaused)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1347,7 +1347,7 @@ func (it *ContractsUnpausedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(ContractsUnpaused)
+		it.Event = new(AggregatorUnpaused)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1363,19 +1363,19 @@ func (it *ContractsUnpausedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *ContractsUnpausedIterator) Error() error {
+func (it *AggregatorUnpausedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *ContractsUnpausedIterator) Close() error {
+func (it *AggregatorUnpausedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// ContractsUnpaused represents a Unpaused event raised by the Contracts contract.
-type ContractsUnpaused struct {
+// AggregatorUnpaused represents a Unpaused event raised by the Aggregator contract.
+type AggregatorUnpaused struct {
 	Account common.Address
 	Raw     types.Log // Blockchain specific contextual infos
 }
@@ -1383,21 +1383,21 @@ type ContractsUnpaused struct {
 // FilterUnpaused is a free log retrieval operation binding the contract event 0x5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa.
 //
 // Solidity: event Unpaused(address account)
-func (_Contracts *ContractsFilterer) FilterUnpaused(opts *bind.FilterOpts) (*ContractsUnpausedIterator, error) {
+func (_Aggregator *AggregatorFilterer) FilterUnpaused(opts *bind.FilterOpts) (*AggregatorUnpausedIterator, error) {
 
-	logs, sub, err := _Contracts.contract.FilterLogs(opts, "Unpaused")
+	logs, sub, err := _Aggregator.contract.FilterLogs(opts, "Unpaused")
 	if err != nil {
 		return nil, err
 	}
-	return &ContractsUnpausedIterator{contract: _Contracts.contract, event: "Unpaused", logs: logs, sub: sub}, nil
+	return &AggregatorUnpausedIterator{contract: _Aggregator.contract, event: "Unpaused", logs: logs, sub: sub}, nil
 }
 
 // WatchUnpaused is a free log subscription operation binding the contract event 0x5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa.
 //
 // Solidity: event Unpaused(address account)
-func (_Contracts *ContractsFilterer) WatchUnpaused(opts *bind.WatchOpts, sink chan<- *ContractsUnpaused) (event.Subscription, error) {
+func (_Aggregator *AggregatorFilterer) WatchUnpaused(opts *bind.WatchOpts, sink chan<- *AggregatorUnpaused) (event.Subscription, error) {
 
-	logs, sub, err := _Contracts.contract.WatchLogs(opts, "Unpaused")
+	logs, sub, err := _Aggregator.contract.WatchLogs(opts, "Unpaused")
 	if err != nil {
 		return nil, err
 	}
@@ -1407,8 +1407,8 @@ func (_Contracts *ContractsFilterer) WatchUnpaused(opts *bind.WatchOpts, sink ch
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(ContractsUnpaused)
-				if err := _Contracts.contract.UnpackLog(event, "Unpaused", log); err != nil {
+				event := new(AggregatorUnpaused)
+				if err := _Aggregator.contract.UnpackLog(event, "Unpaused", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1432,9 +1432,9 @@ func (_Contracts *ContractsFilterer) WatchUnpaused(opts *bind.WatchOpts, sink ch
 // ParseUnpaused is a log parse operation binding the contract event 0x5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa.
 //
 // Solidity: event Unpaused(address account)
-func (_Contracts *ContractsFilterer) ParseUnpaused(log types.Log) (*ContractsUnpaused, error) {
-	event := new(ContractsUnpaused)
-	if err := _Contracts.contract.UnpackLog(event, "Unpaused", log); err != nil {
+func (_Aggregator *AggregatorFilterer) ParseUnpaused(log types.Log) (*AggregatorUnpaused, error) {
+	event := new(AggregatorUnpaused)
+	if err := _Aggregator.contract.UnpackLog(event, "Unpaused", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log

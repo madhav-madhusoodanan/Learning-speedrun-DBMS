@@ -8,6 +8,7 @@ import (
 	"os"
 	"rampx/backend/apps/swaps/contracts"
 	"rampx/backend/apps/swaps/utils"
+	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
@@ -27,6 +28,13 @@ import (
 type TokenDetail struct {
 	TokenAddress string
 	Amount       *big.Int
+
+	// The below is used for tokens that support ERC-2612 (Permit flows)
+	PermitValue *big.Int
+	PermitDeadline *big.Int
+	PermitV uint8
+	PermitR [32]byte
+	PermitS [32]byte
 }
 
 type Route struct {
@@ -90,9 +98,9 @@ func ExecuteCrossChainSwap(
 	auth.GasPrice = gasPrice
 
 	// replace with actual contract deployment
-	aggregatorAddress := utils.GetAggregator(chainId)
-	address := common.HexToAddress(aggregatorAddress)
-	instance, err := contracts.NewContracts(address, client)
+	aggregatorAddressString := utils.GetAggregator(chainId)
+	aggregatorAddress := common.HexToAddress(aggregatorAddressString)
+	aggregator, err := contracts.NewAggregator(aggregatorAddress, client)
 
 	if err != nil {
 		log.Println("[ERROR]: not able to connext to contract: ", err)
@@ -120,6 +128,46 @@ func ExecuteCrossChainSwap(
 			Amount: sellToken.Amount,
 		}
 
+		// TODO: 
+		// 1. Check if the token supports permit
+		// 2. Check if there is signature in the payload
+		// 3. Convert to v, r, s format
+		// 4. executor runs permit 
+		token, err := contracts.NewERC20Token(sellTokenContract.Token, client)
+		if err != nil {
+			log.Println("[ERROR]: Failed to connect to Token: ", sellToken.TokenAddress, err)
+			return err
+		}
+
+		callOpts := &bind.CallOpts{}
+
+		feeProportion, err := aggregator.FeeProportion(callOpts)
+		if err != nil {
+			log.Println("[ERROR]: Failed to fetch fee proportion")
+			return err
+		}
+
+		feeBasis := big.NewInt(int64(1e8))
+		isValidPermitCall := 	sellToken.PermitValue.Cmp(common.Big0) == 1 && 
+						sellToken.PermitDeadline.Cmp(big.NewInt(time.Now().UTC().Unix())) == 1 &&
+						sellToken.PermitValue.Cmp(common.Big0.Div(common.Big0.Mul(sellToken.Amount, feeProportion), feeBasis)) >= 0
+						
+		_, err = token.DOMAINSEPARATOR(callOpts)
+		if err != nil {
+			log.Println("[WARN]: Token doesn't support permit calls: ", sellToken.TokenAddress, err)
+			isValidPermitCall = false
+		}
+
+		if err == nil && isValidPermitCall {
+			_, err = token.Permit(auth, userAddressContract, aggregatorAddress, sellToken.PermitValue, sellToken.PermitDeadline, sellToken.PermitV, sellToken.PermitR, sellToken.PermitS)
+			if err != nil {
+				log.Println("[ERROR]: Failed to call token permit: ", sellToken.TokenAddress, err)
+				return err
+			}
+			auth.Nonce.Add(auth.Nonce, common.Big1)
+		}
+		
+
 		sellTokensContract = append(sellTokensContract, sellTokenContract)
 	}
 
@@ -146,7 +194,7 @@ func ExecuteCrossChainSwap(
 		routesContract = append(routesContract, routeContract)
 	}
 
-	_, err = instance.Execute0(auth, userAddressContract, sellTokensContract, buyTokensContract, routesContract, userSignature)
+	_, err = aggregator.Execute0(auth, userAddressContract, sellTokensContract, buyTokensContract, routesContract, userSignature)
 
 	if err != nil {
 		log.Println("[ERROR]: Failed to execute transaction for user: ", err)

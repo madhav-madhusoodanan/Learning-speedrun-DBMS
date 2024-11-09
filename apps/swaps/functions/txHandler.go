@@ -2,10 +2,12 @@ package functions
 
 import (
 	"fmt"
+	"log"
 	"math/big"
 	"net/http"
 	"rampx/backend/apps/swaps/structs"
 
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/gin-gonic/gin"
 )
@@ -19,9 +21,40 @@ func convertTokenDetails(reqDetails []structs.RequestTokenDetail) ([]TokenDetail
 		if !success {
 			return nil, fmt.Errorf("invalid amount format for token %s", detail.TokenAddress)
 		}
+
+		permitValue := new(big.Int)
+		permitValue, success = permitValue.SetString(detail.PermitValue, 10)
+		if !success {
+			permitValue = common.Big0
+		}
+
+		permitDeadline := new(big.Int)
+		permitDeadline, success = permitDeadline.SetString(detail.PermitDeadline, 10)
+		if !success {
+			permitDeadline = common.Big0
+		}
+
+		var permitR [32]byte
+		permitRValue, err := hexutil.Decode(detail.PermitR)
+		if err != nil {
+			copy(permitR[:], permitRValue)
+		}
+
+		var permitS [32]byte
+		permitSValue, err := hexutil.Decode(detail.PermitS)
+		if err != nil {
+			copy(permitS[:], permitSValue)
+		}
+		log.Println("PermitV: ", detail.PermitV)
+
 		details[i] = TokenDetail{
-			TokenAddress: detail.TokenAddress,
-			Amount:       amount,
+			TokenAddress:   detail.TokenAddress,
+			Amount:         amount,
+			PermitValue:    permitValue,
+			PermitDeadline: permitDeadline,
+			PermitV:        detail.PermitV,
+			PermitR:        [32]byte(permitR),
+			PermitS:        [32]byte(permitS),
 		}
 	}
 	return details, nil
