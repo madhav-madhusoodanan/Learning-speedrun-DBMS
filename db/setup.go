@@ -18,8 +18,8 @@ type Config struct {
     PoolMax  int32
 }
 
-// NewDatabase creates a new Database instance with connection pool
-func NewDatabase(cfg Config) (*Queries, error) {
+// NewDBPool creates a new Database instance with connection pool
+func NewDBPool(cfg Config) (*pgxpool.Pool, error) {
     // Construct connection string
     connStr := fmt.Sprintf(
         "host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
@@ -45,9 +45,6 @@ func NewDatabase(cfg Config) (*Queries, error) {
         return nil, fmt.Errorf("error creating connection pool: %v", err)
     }
 
-    // Create SQLC queries with the pool
-    queries := New(pool)
-
 	// pass the `queries` object to functions that require it
-	return queries, nil
+	return pool, nil
 }
