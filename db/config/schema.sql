@@ -1,6 +1,17 @@
 -- Create table for cross-chain swaps
 CREATE TYPE TX_STATUS AS ENUM ('INITIATED', 'PROCESSING', 'COMPLETED', 'FAILED');
 
+CREATE TABLE rampx_chain_details (
+    chain_id INTEGER PRIMARY KEY,
+    chain_name VARCHAR(30) NOT NULL,
+    chain_logo_uri VARCHAR NOT NULL,
+)
+
+CREATE TABLE rampx_token_details (
+    token_id BIGSERIAL PRIMARY KEY,
+    chain_id
+)
+
 CREATE TABLE rampx_cross_chain_swaps (
     swap_id BIGSERIAL PRIMARY KEY,
     source_chain INTEGER NOT NULL,
