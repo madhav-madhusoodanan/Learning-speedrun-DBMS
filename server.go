@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os/signal"
+	"rampx/backend/apps/oracle"
 	"rampx/backend/apps/ping"
 	"rampx/backend/apps/swaps"
 	"syscall"
@@ -16,7 +17,6 @@ import (
 )
 
 // Create context that listens for the interrupt signal from the OS.
-
 func main(){
 	ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
 	defer stop()
@@ -61,6 +61,7 @@ func main(){
 
 	swaps.Setup(router.Group("/swap"))
 	ping.Setup(router.Group("/ping"))
+	oracle.Setup(router.Group("/oracle"))
 
 	srv := &http.Server{
 		Addr:    ":8080",
