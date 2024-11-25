@@ -28,39 +28,48 @@ func (q *Queries) ConfirmTransaction(ctx context.Context, arg ConfirmTransaction
 }
 
 const createSwapOrder = `-- name: CreateSwapOrder :exec
-INSERT INTO rampx_cross_chain_swaps (
-  source_chain, destination_chain, source_token, destination_token, source_amount, destination_amount, dollar_value, source_address, destination_address, tx_status, transaction_hash
-) VALUES (
-  $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11
+SELECT insert_cross_chain_swap(
+    source_chain_id := $1,
+    source_token_address := $2,
+    source_amount := $3,
+    destination_chain_id := $4,
+    destination_token_address := $5,
+    destination_amount := $6,
+    dollar_value := $7,
+    fee_dollar_value := $8,
+    source_address := $9,
+    destination_address := $10,
+    tx_status := 'COMPLETED',
+    transaction_hash := $11
 )
 `
 
 type CreateSwapOrderParams struct {
-	SourceChain        int32
-	DestinationChain   int32
-	SourceToken        string
-	DestinationToken   string
-	SourceAmount       pgtype.Numeric
-	DestinationAmount  pgtype.Numeric
-	DollarValue        pgtype.Numeric
-	SourceAddress      string
-	DestinationAddress string
-	TxStatus           TxStatus
-	TransactionHash    string
+	SourceChainID           int64
+	SourceTokenAddress      string
+	SourceAmount            pgtype.Numeric
+	DestinationChainID      int64
+	DestinationTokenAddress string
+	DestinationAmount       pgtype.Numeric
+	DollarValue             pgtype.Numeric
+	FeeDollarValue          pgtype.Numeric
+	SourceAddress           string
+	DestinationAddress      string
+	TransactionHash         string
 }
 
 func (q *Queries) CreateSwapOrder(ctx context.Context, arg CreateSwapOrderParams) error {
 	_, err := q.db.Exec(ctx, createSwapOrder,
-		arg.SourceChain,
-		arg.DestinationChain,
-		arg.SourceToken,
-		arg.DestinationToken,
+		arg.SourceChainID,
+		arg.SourceTokenAddress,
 		arg.SourceAmount,
+		arg.DestinationChainID,
+		arg.DestinationTokenAddress,
 		arg.DestinationAmount,
 		arg.DollarValue,
+		arg.FeeDollarValue,
 		arg.SourceAddress,
 		arg.DestinationAddress,
-		arg.TxStatus,
 		arg.TransactionHash,
 	)
 	return err
@@ -70,7 +79,8 @@ const getDailyVolume = `-- name: GetDailyVolume :many
 SELECT 
     DATE(tx_timestamp) as trade_date,
     COUNT(*) as number_of_trades,
-    SUM(dollar_value) as total_daily_volume
+    SUM(dollar_value) as total_daily_volume,
+    SUM(fee_dollar_value) as total_daily_fee_volume
 FROM rampx_cross_chain_swaps
 WHERE 
     tx_timestamp >= CURRENT_DATE - INTERVAL '30 days'
@@ -80,9 +90,10 @@ ORDER BY trade_date DESC
 `
 
 type GetDailyVolumeRow struct {
-	TradeDate        pgtype.Date
-	NumberOfTrades   int64
-	TotalDailyVolume int64
+	TradeDate           pgtype.Date
+	NumberOfTrades      int64
+	TotalDailyVolume    int64
+	TotalDailyFeeVolume int64
 }
 
 func (q *Queries) GetDailyVolume(ctx context.Context) ([]GetDailyVolumeRow, error) {
@@ -94,50 +105,11 @@ func (q *Queries) GetDailyVolume(ctx context.Context) ([]GetDailyVolumeRow, erro
 	var items []GetDailyVolumeRow
 	for rows.Next() {
 		var i GetDailyVolumeRow
-		if err := rows.Scan(&i.TradeDate, &i.NumberOfTrades, &i.TotalDailyVolume); err != nil {
-			return nil, err
-		}
-		items = append(items, i)
-	}
-	if err := rows.Err(); err != nil {
-		return nil, err
-	}
-	return items, nil
-}
-
-const getPendingTransactions = `-- name: GetPendingTransactions :many
-SELECT 
-    transaction_hash,
-    source_chain,
-    destination_chain,
-    tx_timestamp
-FROM rampx_cross_chain_swaps
-WHERE tx_status = 'PROCESSING'
-ORDER BY tx_timestamp DESC 
-LIMIT 190
-`
-
-type GetPendingTransactionsRow struct {
-	TransactionHash  string
-	SourceChain      int32
-	DestinationChain int32
-	TxTimestamp      pgtype.Timestamp
-}
-
-func (q *Queries) GetPendingTransactions(ctx context.Context) ([]GetPendingTransactionsRow, error) {
-	rows, err := q.db.Query(ctx, getPendingTransactions)
-	if err != nil {
-		return nil, err
-	}
-	defer rows.Close()
-	var items []GetPendingTransactionsRow
-	for rows.Next() {
-		var i GetPendingTransactionsRow
 		if err := rows.Scan(
-			&i.TransactionHash,
-			&i.SourceChain,
-			&i.DestinationChain,
-			&i.TxTimestamp,
+			&i.TradeDate,
+			&i.NumberOfTrades,
+			&i.TotalDailyVolume,
+			&i.TotalDailyFeeVolume,
 		); err != nil {
 			return nil, err
 		}

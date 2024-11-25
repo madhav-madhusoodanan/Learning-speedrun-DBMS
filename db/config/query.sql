@@ -1,34 +1,31 @@
 -- name: CreateSwapOrder :exec
-INSERT INTO rampx_cross_chain_swaps (
-  source_chain, destination_chain, source_token, destination_token, source_amount, destination_amount, dollar_value, source_address, destination_address, tx_status, transaction_hash
-) VALUES (
-  $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11
+SELECT insert_cross_chain_swap(
+    source_chain_id := $1,
+    source_token_address := $2,
+    source_amount := $3,
+    destination_chain_id := $4,
+    destination_token_address := $5,
+    destination_amount := $6,
+    dollar_value := $7,
+    fee_dollar_value := $8,
+    source_address := $9,
+    destination_address := $10,
+    tx_status := 'COMPLETED',
+    transaction_hash := $11
 );
 
 -- name: GetDailyVolume :many
 SELECT 
     DATE(tx_timestamp) as trade_date,
     COUNT(*) as number_of_trades,
-    SUM(dollar_value) as total_daily_volume
+    SUM(dollar_value) as total_daily_volume,
+    SUM(fee_dollar_value) as total_daily_fee_volume
 FROM rampx_cross_chain_swaps
 WHERE 
     tx_timestamp >= CURRENT_DATE - INTERVAL '30 days'
     AND status = 'COMPLETED'
 GROUP BY DATE(tx_timestamp)
 ORDER BY trade_date DESC;
-
--- name: GetPendingTransactions :many
-SELECT 
-    transaction_hash,
-    source_chain,
-    destination_chain,
-    tx_timestamp
-FROM rampx_cross_chain_swaps
-WHERE 
-    tx_status = 'PROCESSING'
-    AND tx_timestamp >= CURRENT_DATE - INTERVAL '1 hour'
-ORDER BY tx_timestamp DESC 
-LIMIT 190;
 
 -- name: ConfirmTransaction :exec
 UPDATE rampx_cross_chain_swaps 

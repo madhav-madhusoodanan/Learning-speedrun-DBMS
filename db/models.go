@@ -55,15 +55,20 @@ func (ns NullTxStatus) Value() (driver.Value, error) {
 	return string(ns.TxStatus), nil
 }
 
+type RampxChainDetail struct {
+	ChainID      int64
+	ChainName    string
+	ChainLogoUri string
+}
+
 type RampxCrossChainSwap struct {
 	SwapID             int64
-	SourceChain        int32
-	DestinationChain   int32
-	SourceToken        string
-	DestinationToken   string
+	SourceToken        int64
 	SourceAmount       pgtype.Numeric
+	DestinationToken   int64
 	DestinationAmount  pgtype.Numeric
 	DollarValue        pgtype.Numeric
+	FeeDollarValue     pgtype.Numeric
 	SourceAddress      string
 	DestinationAddress string
 	TxTimestamp        pgtype.Timestamp
@@ -71,11 +76,17 @@ type RampxCrossChainSwap struct {
 	TransactionHash    string
 }
 
-type RampxSwapStatistic struct {
-	StatID        int64
-	StatDate      pgtype.Date
-	TotalVolume   pgtype.Numeric
-	NumberOfSwaps int32
-	CreatedAt     pgtype.Timestamp
-	UpdatedAt     pgtype.Timestamp
+type RampxStatistic struct {
+	StatID            int64
+	StatDate          pgtype.Date
+	TotalDollarVolume pgtype.Numeric
+	FeeDollarVolume   pgtype.Numeric
+	CreatedAt         pgtype.Timestamp
+	UpdatedAt         pgtype.Timestamp
+}
+
+type RampxTokenDetail struct {
+	TokenID      int64
+	ChainID      int64
+	TokenAddress string
 }
