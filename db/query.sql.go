@@ -11,6 +11,27 @@ import (
 	"github.com/jackc/pgx/v5/pgtype"
 )
 
+const addUserWallet = `-- name: AddUserWallet :exec
+INSERT INTO rampx_user_wallets (
+    user_name,
+    chain_id,
+    user_address
+) VALUES (
+    $1, $2, $3
+)
+`
+
+type AddUserWalletParams struct {
+	UserName    int64
+	ChainID     int64
+	UserAddress string
+}
+
+func (q *Queries) AddUserWallet(ctx context.Context, arg AddUserWalletParams) error {
+	_, err := q.db.Exec(ctx, addUserWallet, arg.UserName, arg.ChainID, arg.UserAddress)
+	return err
+}
+
 const confirmTransaction = `-- name: ConfirmTransaction :exec
 UPDATE rampx_cross_chain_swaps 
 SET tx_status = $1
@@ -119,4 +140,36 @@ func (q *Queries) GetDailyVolume(ctx context.Context) ([]GetDailyVolumeRow, erro
 		return nil, err
 	}
 	return items, nil
+}
+
+const getExistingWalletsByChainAndAddress = `-- name: GetExistingWalletsByChainAndAddress :one
+SELECT count(*) from rampx_user_wallets
+WHERE 
+    chain_id = $1 AND 
+    user_address ILIKE $2
+`
+
+type GetExistingWalletsByChainAndAddressParams struct {
+	ChainID     int64
+	UserAddress string
+}
+
+func (q *Queries) GetExistingWalletsByChainAndAddress(ctx context.Context, arg GetExistingWalletsByChainAndAddressParams) (int64, error) {
+	row := q.db.QueryRow(ctx, getExistingWalletsByChainAndAddress, arg.ChainID, arg.UserAddress)
+	var count int64
+	err := row.Scan(&count)
+	return count, err
+}
+
+const getExistingWalletsByUsername = `-- name: GetExistingWalletsByUsername :one
+SELECT count(*) from rampx_user_wallets
+WHERE 
+    user_name ILIKE $1
+`
+
+func (q *Queries) GetExistingWalletsByUsername(ctx context.Context, userName int64) (int64, error) {
+	row := q.db.QueryRow(ctx, getExistingWalletsByUsername, userName)
+	var count int64
+	err := row.Scan(&count)
+	return count, err
 }

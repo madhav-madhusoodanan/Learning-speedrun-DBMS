@@ -58,6 +58,7 @@ func (ns NullTxStatus) Value() (driver.Value, error) {
 type RampxChainDetail struct {
 	ChainID      int64
 	ChainName    string
+	ChainSymbol  string
 	ChainLogoUri string
 }
 
@@ -89,4 +90,10 @@ type RampxTokenDetail struct {
 	TokenID      int64
 	ChainID      int64
 	TokenAddress string
+}
+
+type RampxUserWallet struct {
+	UserName    int64
+	ChainID     int64
+	UserAddress string
 }

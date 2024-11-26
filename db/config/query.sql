@@ -31,3 +31,23 @@ ORDER BY trade_date DESC;
 UPDATE rampx_cross_chain_swaps 
 SET tx_status = $1
 WHERE transaction_hash = $2;
+
+-- name: AddUserWallet :exec
+INSERT INTO rampx_user_wallets (
+    user_name,
+    chain_id,
+    user_address
+) VALUES (
+    $1, $2, $3
+);
+
+-- name: GetExistingWalletsByChainAndAddress :one
+SELECT count(*) from rampx_user_wallets
+WHERE 
+    chain_id = $1 AND 
+    user_address ILIKE $2;
+
+-- name: GetExistingWalletsByUsername :one
+SELECT count(*) from rampx_user_wallets
+WHERE 
+    user_name ILIKE $1;

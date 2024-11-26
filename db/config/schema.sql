@@ -4,6 +4,7 @@ CREATE TYPE TX_STATUS AS ENUM ('INITIATED', 'PROCESSING', 'COMPLETED', 'FAILED')
 CREATE TABLE rampx_chain_details (
     chain_id BIGINT PRIMARY KEY,
     chain_name VARCHAR(30) NOT NULL,
+    chain_symbol VARCHAR(10) NOT NULL,
     chain_logo_uri VARCHAR NOT NULL
 );
 
@@ -41,11 +42,54 @@ CREATE TABLE rampx_statistics (
     updated_at TIMESTAMP DEFAULT(now() at time zone 'utc')
 );
 
+CREATE TABLE rampx_user_wallets(
+    user_name BIGINT NOT NULL,
+    chain_id BIGINT NOT NULL,
+    user_address VARCHAR(80) NOT NULL,
+    FOREIGN KEY (chain_id) REFERENCES rampx_chain_details(chain_id),
+    PRIMARY KEY ( user_name, chain_id, user_address )
+);
+
 -- Create unique index on date to ensure we have one record per day
 CREATE UNIQUE INDEX idx_stat_date ON rampx_statistics(stat_date);
 
 -- Create index on timestamp for better query performance
 CREATE INDEX idx_timestamp ON rampx_cross_chain_swaps(tx_timestamp);
+
+-- Create index on timestamp for better query performance
+CREATE INDEX idx_user_name ON rampx_user_wallets(user_name);
+
+-- Create function to handle the trigger
+CREATE OR REPLACE FUNCTION update_swap_statistics()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Only proceed if status is being changed to 'COMPLETED'
+    IF (TG_OP = 'INSERT' AND NEW.tx_status = 'COMPLETED') OR
+       (TG_OP = 'UPDATE' AND NEW.tx_status = 'COMPLETED' AND OLD.tx_status != 'COMPLETED') THEN
+        
+        -- Insert or update statistics for the day
+        INSERT INTO rampx_statistics (
+            stat_date,
+            total_dollar_volume,
+            fee_dollar_volume,
+            updated_at
+        )
+        VALUES (
+            DATE(NEW.tx_timestamp),
+            NEW.dollar_value,
+            NEW.fee_dollar_value,
+            now() at time zone 'utc'
+        )
+        ON CONFLICT (stat_date) DO UPDATE
+        SET
+            total_dollar_volume = rampx_statistics.total_dollar_volume + NEW.dollar_value,
+            fee_dollar_volume = rampx_statistics.fee_dollar_volume + NEW.fee_dollar_value,
+            updated_at = now() at time zone 'utc';
+    END IF;
+    
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
 
 -- Create function to handle inserts into rampx_cross_chain_swaps
 CREATE OR REPLACE FUNCTION insert_cross_chain_swap(
