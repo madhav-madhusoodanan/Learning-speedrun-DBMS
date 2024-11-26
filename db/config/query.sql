@@ -12,7 +12,6 @@ SELECT insert_cross_chain_swap(
     destination_address := $10,
     tx_status := 'COMPLETED',
     transaction_hash := $11
-
 );
 
 -- name: GetDailyVolume :many

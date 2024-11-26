@@ -188,7 +188,6 @@ BEGIN
             fee_dollar_volume = rampx_statistics.fee_dollar_volume + NEW.fee_dollar_value,
             updated_at = now() at time zone 'utc';
     END IF;
-    
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
