@@ -45,6 +45,6 @@ func NewDBPool(cfg Config) (*pgxpool.Pool, error) {
         return nil, fmt.Errorf("error creating connection pool: %v", err)
     }
 
-	// pass the `queries` object to functions that require it
-	return pool, nil
+	  // pass the `queries` object to functions that require it
+	  return pool, nil
 }
