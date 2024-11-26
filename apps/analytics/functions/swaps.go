@@ -31,8 +31,6 @@ func AddSwap(client *db.Queries) func(c *gin.Context) {
 			return
 		}
 
-		/* TODO: calculate the dollar value and the fee amount */
-
 		request := db.CreateSwapOrderParams{
 			SourceChainID: req.SourceChainID,
 			SourceTokenAddress: req.SourceTokenAddress,
