@@ -22,7 +22,7 @@ INSERT INTO rampx_user_wallets (
 `
 
 type AddUserWalletParams struct {
-	UserName    int64
+	UserName    string
 	ChainID     int64
 	UserAddress string
 }
@@ -167,7 +167,7 @@ WHERE
     user_name ILIKE $1
 `
 
-func (q *Queries) GetExistingWalletsByUsername(ctx context.Context, userName int64) (int64, error) {
+func (q *Queries) GetExistingWalletsByUsername(ctx context.Context, userName string) (int64, error) {
 	row := q.db.QueryRow(ctx, getExistingWalletsByUsername, userName)
 	var count int64
 	err := row.Scan(&count)

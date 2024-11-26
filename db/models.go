@@ -93,7 +93,7 @@ type RampxTokenDetail struct {
 }
 
 type RampxUserWallet struct {
-	UserName    int64
+	UserName    string
 	ChainID     int64
 	UserAddress string
 }

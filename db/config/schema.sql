@@ -43,7 +43,7 @@ CREATE TABLE rampx_statistics (
 );
 
 CREATE TABLE rampx_user_wallets(
-    user_name BIGINT NOT NULL,
+    user_name VARCHAR(80) NOT NULL,
     chain_id BIGINT NOT NULL,
     user_address VARCHAR(80) NOT NULL,
     FOREIGN KEY (chain_id) REFERENCES rampx_chain_details(chain_id),
