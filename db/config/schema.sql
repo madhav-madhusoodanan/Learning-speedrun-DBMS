@@ -47,7 +47,7 @@ CREATE TABLE rampx_user_wallets(
     chain_id BIGINT NOT NULL,
     user_address VARCHAR(80) NOT NULL,
     FOREIGN KEY (chain_id) REFERENCES rampx_chain_details(chain_id),
-    PRIMARY KEY ( user_name, chain_id, user_address )
+    PRIMARY KEY ( user_name, chain_id )
 );
 
 -- Create unique index on date to ensure we have one record per day

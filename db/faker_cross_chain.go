@@ -19,6 +19,8 @@ type ChainToken struct {
 	TokenAddress string
 }
 
+
+
 // ConvertToPgNumeric converts a big.Float to pgtype.Numeric
 func ConvertToPgNumeric(f big.Float) pgtype.Numeric {
 	value := pgtype.Numeric{
