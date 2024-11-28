@@ -6,8 +6,8 @@ import (
 	"log"
 	"math/big"
 	"os"
-	"rampx/backend/apps/swaps/contracts"
-	"rampx/backend/apps/swaps/utils"
+	"rampx/backend/internal/apps/swaps/internal/contracts"
+	"rampx/backend/internal/apps/swaps/internal/utils"
 	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"

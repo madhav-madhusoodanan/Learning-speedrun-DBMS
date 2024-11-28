@@ -6,6 +6,7 @@ import (
 	"encoding/hex"
 	"fmt"
 	"log"
+	"os"
 	"strings"
 
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -73,16 +74,7 @@ func RunUserFaker() {
 	ctx := context.Background()
 
 	// Setup connection pool
-	dbConfig := Config{
-		Host:     "localhost",
-		Port:     5432,
-		User:     "postgres",
-		Password: "postgres",
-		DBName:   "rampx",
-		PoolMax:  4,
-	}
-
-	pool, err := NewDBPool(dbConfig)
+	pool, err := NewDBPool(os.Getenv("DATABASE_URI"))
 	if err != nil {
 		log.Panicln(err.Error())
 	}

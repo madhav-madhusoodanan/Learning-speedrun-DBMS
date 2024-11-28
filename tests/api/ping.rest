@@ -1,1 +1,1 @@
-GET http://localhost:8080/ping/age/lmew
+GET http://localhost:8080/ping/

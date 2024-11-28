@@ -1,8 +1,8 @@
 package swaps
 
 import (
-	"rampx/backend/apps/swaps/functions"
-	"rampx/backend/apps/swaps/utils"
+	"rampx/backend/internal/apps/swaps/internal/functions"
+	"rampx/backend/internal/apps/swaps/internal/utils"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"

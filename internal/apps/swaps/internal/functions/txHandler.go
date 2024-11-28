@@ -5,7 +5,7 @@ import (
 	"log"
 	"math/big"
 	"net/http"
-	"rampx/backend/apps/swaps/structs"
+	"rampx/backend/internal/apps/swaps/internal/structs"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"

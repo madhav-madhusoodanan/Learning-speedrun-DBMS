@@ -4,11 +4,12 @@ import (
 	"context"
 	"log"
 	"net/http"
+	"os"
 	"os/signal"
-	"rampx/backend/apps/analytics"
-	"rampx/backend/apps/ping"
-	"rampx/backend/apps/swaps"
-	"rampx/backend/db"
+	"rampx/backend/internal/apps/analytics"
+	"rampx/backend/internal/apps/ping"
+	"rampx/backend/internal/apps/swaps"
+	"rampx/backend/internal/db"
 	"syscall"
 	"time"
 
@@ -22,16 +23,7 @@ func main() {
 	defer stop()
 
 	// === DB Configuration ===
-	dbConfig := db.Config{
-		Host:     "localhost",
-		Port:     5432,
-		User:     "postgres",
-		Password: "postgres",
-		DBName:   "rampx",
-		PoolMax:  4,
-	}
-
-	pool, err := db.NewDBPool(dbConfig)
+	pool, err := db.NewDBPool(os.Getenv("DATABASE_URI"))
 	if err != nil {
 		log.Panicln(err.Error())
 	}
@@ -84,7 +76,7 @@ func main() {
 	analytics.Setup(router.Group("/analytics"), db_client)
 
 	srv := &http.Server{
-		Addr:    ":8080",
+		Addr:    ":"+os.Getenv("PORT"),
 		Handler: router,
 	}
 

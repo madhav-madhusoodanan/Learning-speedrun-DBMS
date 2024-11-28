@@ -3,9 +3,9 @@ package functions
 import (
 	"context"
 	"github.com/gin-gonic/gin"
-	"rampx/backend/apps/analytics/structs"
+	"rampx/backend/internal/apps/analytics/internal/structs"
 	"net/http"
-	"rampx/backend/db"
+	"rampx/backend/internal/db"
 )
 
 /* 

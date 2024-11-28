@@ -1,7 +1,7 @@
 package main
 
 import (
-	"rampx/backend/db"
+	"rampx/backend/internal/db"
 	"testing"
 )
 

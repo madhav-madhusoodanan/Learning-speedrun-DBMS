@@ -19,21 +19,14 @@ type Config struct {
 }
 
 // NewDBPool creates a new Database instance with connection pool
-func NewDBPool(cfg Config) (*pgxpool.Pool, error) {
-    // Construct connection string
-    connStr := fmt.Sprintf(
-        "host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
-        cfg.Host, cfg.Port, cfg.User, cfg.Password, cfg.DBName,
-    )
-
+func NewDBPool(dbURL string) (*pgxpool.Pool, error) {
     // Configure the connection pool
-    poolConfig, err := pgxpool.ParseConfig(connStr)
+    poolConfig, err := pgxpool.ParseConfig(dbURL)
     if err != nil {
         return nil, fmt.Errorf("error parsing pool config: %v", err)
     }
 
     // Set pool configuration
-    poolConfig.MaxConns = cfg.PoolMax
     poolConfig.MinConns = 2
     poolConfig.MaxConnLifetime = time.Hour
     poolConfig.MaxConnIdleTime = 30 * time.Minute

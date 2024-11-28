@@ -1,9 +1,9 @@
 package analytics
 
 import (
-	"rampx/backend/apps/analytics/functions"
+	"rampx/backend/internal/apps/analytics/internal/functions"
+	"rampx/backend/internal/db"
 	"github.com/gin-gonic/gin"
-	"rampx/backend/db"
 )
 
 func Setup(router *gin.RouterGroup, client *db.Queries){

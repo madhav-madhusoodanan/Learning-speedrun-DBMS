@@ -6,6 +6,7 @@ import (
 	"log"
 	"math/big"
 	"math/rand"
+	"os"
 	"time"
 
 	"github.com/go-faker/faker/v4"
@@ -122,16 +123,9 @@ func RunCrossChainFaker() {
 	rand.NewSource(time.Now().UnixNano())
 
 	// Setup connection pool
-    dbConfig := Config{
-        Host:     "localhost",
-        Port:     5432,
-        User:     "postgres",
-        Password: "postgres",
-        DBName:   "rampx",
-        PoolMax:  4,
-    }
+	// dbURL := "postgres://postgres:postgres@localhost:5432/rampx?pool_max_conns=10"
 
-    pool, err := NewDBPool(dbConfig)
+    pool, err := NewDBPool(os.Getenv("DATABASE_URI"))
     if(err != nil){
         log.Panicln(err.Error())
     }
