@@ -8,7 +8,7 @@ import (
 	"os/signal"
 	"rampx/backend/internal/apps/analytics"
 	"rampx/backend/internal/apps/ping"
-	"rampx/backend/internal/apps/swaps"
+	// "rampx/backend/internal/apps/swaps"
 	"rampx/backend/internal/db"
 	"syscall"
 	"time"
@@ -71,7 +71,7 @@ func main() {
 	// router.Use(secureMiddlewareFunc)
 	router.Use(cors.Default())
 
-	swaps.Setup(router.Group("/swap"))
+	// swaps.Setup(router.Group("/swap"))
 	ping.Setup(router.Group("/ping"))
 	analytics.Setup(router.Group("/analytics"), db_client)
 
