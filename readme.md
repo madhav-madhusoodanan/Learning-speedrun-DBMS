@@ -1,1 +1,1 @@
-## SDE 1 Speedrun: DBMS chapter
+## Learning Speedrun: DBMS chapter
